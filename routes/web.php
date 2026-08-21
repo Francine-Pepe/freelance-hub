@@ -1,12 +1,27 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ClientController;
 
-/* backend endpoints - routes */
+/* backend endpoints - routes
+Route::resource => englobes all the routes (client resource) for a resource controller, in this case ClientController
+*/
 
-Route::get('/', function () {
+Route::resource('clients', ClientController::class);
+
+/*
+CLIENT RESOURCE
+
+index   → /clients
+create  → /clients/create
+store   → POST /clients
+show    → /clients/{client}
+edit    → /clients/{client}/edit
+update  → PUT /clients/{client}
+destroy → DELETE /clients/{client}
+*/
+
+/* Route::get('/', function () {
     return view('welcome');
 });
 
@@ -26,4 +41,4 @@ Route::get('/clients/{client}/edit', [ClientController::class, 'edit']);
 
 Route::put('/clients/{client}', [ClientController::class, 'update']);
 
-Route::delete('/clients/{client}', [ClientController::class, 'destroy']);
+Route::delete('/clients/{client}', [ClientController::class, 'destroy']); */

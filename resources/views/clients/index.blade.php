@@ -8,6 +8,7 @@
         <p> {{ $client->email }} </p>
 
         <a href="/clients/{{ $client->id }}/edit">Edit</a>
+        <a href="/clients/{{ $client->id }}">View Client</a>
 
         <form method="POST" action="/clients/{{ $client->id }}">
             @csrf
