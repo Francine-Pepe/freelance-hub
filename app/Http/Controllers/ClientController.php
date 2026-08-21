@@ -52,5 +52,11 @@ class ClientController extends Controller
 
         return redirect('/clients');
     }
+
+    public function show(Client $client) {
+        return view('clients.show', [
+            'client' => $client
+        ]);
+    }
 }
 
