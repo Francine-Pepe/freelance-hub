@@ -10,6 +10,7 @@
     <header>
         <nav>
             <a href="/clients">Clients</a>
+            <a href="/projects">Projects</a>
         </nav>
     </header>
 

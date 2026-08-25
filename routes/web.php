@@ -2,12 +2,18 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProjectController;
 
 /* backend endpoints - routes
 Route::resource => englobes all the routes (client resource) for a resource controller, in this case ClientController
 */
 
 Route::resource('clients', ClientController::class);
+
+Route::resource('projects', ProjectController::class);
+
+Route::get('/dashboard', [DashboardController::class, 'index']);
 
 /*
 CLIENT RESOURCE
