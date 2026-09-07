@@ -1,19 +1,17 @@
 <?php
 
-echo '<pre>';
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Request;
 
-var_dump([
-    'SESSION_DRIVER_getenv' => getenv('SESSION_DRIVER'),
-    'SESSION_DRIVER_SERVER' => $_SERVER['SESSION_DRIVER'] ?? null,
-    'SESSION_DRIVER_ENV' => $_ENV['SESSION_DRIVER'] ?? null,
+define('LARAVEL_START', microtime(true));
 
-    'APP_ENV_getenv' => getenv('APP_ENV'),
-    'APP_ENV_SERVER' => $_SERVER['APP_ENV'] ?? null,
-    'APP_ENV_ENV' => $_ENV['APP_ENV'] ?? null,
+if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+    require $maintenance;
+}
 
-    'APP_URL_getenv' => getenv('APP_URL'),
-]);
+require __DIR__.'/../vendor/autoload.php';
 
-echo '</pre>';
+/** @var Application $app */
+$app = require_once __DIR__.'/../bootstrap/app.php';
 
-exit;
+$app->handleRequest(Request::capture());
