@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
@@ -14,6 +14,10 @@ require __DIR__.'/../vendor/autoload.php';
 /** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-dd(Request::capture());
+$request = Request::capture();
+
+$app->handleRequest($request);
+
+dd('handleRequest finished');
 
 /* $app->handleRequest(Request::capture()); */
