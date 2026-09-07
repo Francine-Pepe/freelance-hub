@@ -3,46 +3,61 @@
 @section('content')
 
     <h1>Freelance Hub</h1>
-    <section>
-        <div>
-            <h2>Clients</h2>
-            <p>{{ $clientCount }}</p>
+    <section class="stats-grid">
+        <article class="stat-card">
+            <span class="stat-card__label">Clients</span>
+            <strong class="stat-card__value">{{ $clientCount }}</strong>
             <a href="/clients">
                 View Clients
             </a>
-        </div>
+        </article>
 
-        <div>
-            <h2>Projects</h2>
-            <p>{{ $projectCount }}</p>
+
+        <article class="stat-card">
+            <span class="stat-card__label">Projects</span>
+            <strong class="stat-card__value">{{ $projectCount }}</strong>
             <a href="/projects">View Projects</a>
-        </div>
+        </article>
     </section>
 
-    <section>
-        <h2>Recent Projects</h2>
+    <section class="dashboard-section">
+        <div class="section-heading">
+            <h2>Recent Projects</h2>
+            <a href="/projects">View all</a>
+        </div>
+
+    <div class="project-list">
 
         @forelse ($recentProjects as $project)
 
-        <article>
-            <h3>
-                <a href="/projects/{{ $project->id }}">{{ $project->name }}</a>
-            </h3>
-            <p>
-                Client: {{ $project->client->name }}
-            </p>
-
-            @if ($project->budget)
+        <article class="project-card">
+            <div class="project-card__main">
+                <h3>
+                    <a href="/projects/{{ $project->id }}">{{ $project->name }}</a>
+                </h3>
                 <p>
-                    Burget:
-                    €{{ number_format($project->burdget, 2, ',', '.') }}
+                    Client: {{ $project->client->name }}
                 </p>
-            @endif
+            </div>
+
+            <div class="project-card__meta">
+                @if ($project->budget)
+                    <p>
+                        Budget:
+                        €{{ number_format($project->budget, 2, ',', '.') }}
+                    </p>
+                @endif
+
+                <span class="status-badge">
+                    {{ $project->status->label() }}
+                </span>
+            </div>
         </article>
 
-    @empty
+        @empty
         <p>No projects yet.</p>
-    @endforelse
+        @endforelse
+    </div>
     </section>
 
     <section>
