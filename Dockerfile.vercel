@@ -1,0 +1,34 @@
+FROM dunglas/frankenphp:php8.3-bookworm
+
+WORKDIR /app
+
+RUN install-php-extensions \
+    pdo_sqlite \
+    mbstring \
+    bcmath \
+    opcache
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+COPY . .
+
+RUN composer install \
+    --no-dev \
+    --optimize-autoloader \
+    --no-interaction
+
+RUN apt-get update \
+    && apt-get install -y nodejs npm \
+    && npm install \
+    && npm run build \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p \
+    storage/framework/cache \
+    storage/framework/sessions \
+    storage/framework/views \
+    bootstrap/cache
+
+RUN chmod -R 775 storage bootstrap/cache
+
+CMD ["sh", "-c", "frankenphp php-server -r public/ --listen :${PORT:-80}"]
