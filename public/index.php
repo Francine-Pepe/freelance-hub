@@ -16,8 +16,16 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $request = Request::capture();
 
-$app->handleRequest($request);
-
-dd('handleRequest finished');
+try {
+    $app->handleRequest($request);
+} catch (\Throwable $e) {
+    dd(
+        get_class($e),
+        $e->getMessage(),
+        $e->getFile(),
+        $e->getLine(),
+        $e->getTraceAsString()
+    );
+}
 
 /* $app->handleRequest(Request::capture()); */
