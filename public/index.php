@@ -11,23 +11,11 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 
 require __DIR__.'/../vendor/autoload.php';
 
-/** @var Application $app */
 $app = require_once __DIR__.'/../bootstrap/app.php';
 
-$request = Request::capture();
+$app->boot();
 
-dd(config('session.driver'), env('SESSION_DRIVER'));
-
-try {
-    $app->handleRequest($request);
-} catch (\Throwable $e) {
-    dd(
-        get_class($e),
-        $e->getMessage(),
-        $e->getFile(),
-        $e->getLine(),
-        $e->getTraceAsString()
-    );
-}
-
-/* $app->handleRequest(Request::capture()); */
+dd([
+    'env_session_driver' => env('SESSION_DRIVER'),
+    'config_session_driver' => config('session.driver'),
+]);
