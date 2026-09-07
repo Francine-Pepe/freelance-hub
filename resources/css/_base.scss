@@ -1,0 +1,29 @@
+@use 'variables' as variables;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    background: variables.$color-bg;
+    color: variables.$color-text;
+    font-family: variables.$font-family;
+    line-height: 1.5;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+    font: inherit;
+}

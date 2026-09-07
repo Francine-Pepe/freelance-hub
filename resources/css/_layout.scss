@@ -1,0 +1,10 @@
+@use 'variables' as variables;
+
+.container {
+    width: min(1200px, calc(100% - 48px));
+    margin-inline: auto;
+}
+
+main {
+    padding-block: variables.$spacing-xl;
+}
