@@ -1,21 +1,11 @@
 <?php
 
-use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
-
-define('LARAVEL_START', microtime(true));
-
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
-    require $maintenance;
-}
-
-require __DIR__.'/../vendor/autoload.php';
-
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
-$app->boot();
-
-dd([
-    'env_session_driver' => env('SESSION_DRIVER'),
-    'config_session_driver' => config('session.driver'),
+echo '<pre>';
+var_dump([
+    'SESSION_DRIVER' => getenv('SESSION_DRIVER'),
+    'APP_ENV' => getenv('APP_ENV'),
+    'APP_KEY_EXISTS' => !empty(getenv('APP_KEY')),
 ]);
+echo '</pre>';
+
+exit;
