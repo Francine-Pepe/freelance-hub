@@ -16,6 +16,8 @@ $app = require_once __DIR__.'/../bootstrap/app.php';
 
 $request = Request::capture();
 
+dd(config('session.driver'), env('SESSION_DRIVER'));
+
 try {
     $app->handleRequest($request);
 } catch (\Throwable $e) {
