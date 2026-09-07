@@ -24,7 +24,7 @@
 
     <p>
         <strong>Status:</strong>
-        {{ $project->statusLabel() }}
+        {{ $project->status->label() }}
     </p>
 
     <a href="/projects/{{ $project->id }}/edit">

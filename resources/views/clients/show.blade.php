@@ -37,7 +37,7 @@
             @endif
 
             <p>
-                Status: {{ $project->statusLabel() }}
+                Status: {{ $project->status->label() }}
             </p>
         </article>
     @empty
