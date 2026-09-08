@@ -4,37 +4,55 @@
 
 @section('content')
 
-    <h1>Clients</h1>
-    <a href="/clients/create">Add Client</a>
+    <header class="page-header">
+        <div>
+            <h1>Clients</h1>
+            <p>Manage your clients and their projects.</p>
+        </div>
 
-    @foreach ($clients as $client)
-        <article>
-            <h2> {{ $client->name }} </h2>
+        <a href="/clients/create">Add Client</a>
+    </header>
 
-            @if ($client->company)
-                <p>{{ $client->company }}</p>
-            @endif
+    <section class="item-list">
 
-            @if ($client->email)
-                <p>{{ $client->email }}</p>
-            @endif
+        @foreach ($clients as $client)
+            <article class="item-card">
 
-            @if ($client->phone)
-                <p>{{ $client->phone }}</p>
-            @endif
+                <div class="item-card__main">
+                    <h2>
+                        <a href="/clients/{{ $client->id }}">
+                            {{ $client->name }}
+                        </a>
+                    </h2>
 
-            <a href="/clients/{{ $client->id }}/edit">Edit</a>
-            <a href="/clients/{{ $client->id }}">View Client</a>
+                    @if ($client->company)
+                        <p>{{ $client->company }}</p>
+                    @endif
 
-            <form method="POST" action="/clients/{{ $client->id }}">
-                @csrf
-                @method('DELETE')
-                <button type="submit">Delete</button>
-            </form>
-        </article>
+                    @if ($client->email)
+                        <p>{{ $client->email }}</p>
+                    @endif
 
-    @endforeach
+                    @if ($client->phone)
+                        <p>{{ $client->phone }}</p>
+                    @endif
 
+                </div>
+
+                <div class="item-card__actions">
+                    <a href="/clients/{{ $client->id }}/edit">Edit</a>
+                    <a href="/clients/{{ $client->id }}">View Client</a>
+
+                    <form method="POST" action="/clients/{{ $client->id }}">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Delete</button>
+                </form>
+                </div>
+            </article>
+        @endforeach
+
+    </section>
 @endsection
 
 

@@ -2,46 +2,82 @@
 @section('title', 'Projects')
 @section('content')
 
-    <h1>Projects</h1>
+    <header class="page-header">
+        <div>
+            <h1>Projects</h1>
+            <p>Manage your projects and track their progress.</p>
+        </div>
 
-    <a href="/projects/create">Add Projects</a>
+        <a href="/projects/create" class="button">Add Projects</a>
 
-    @foreach ($projects as $project)
+    </header>
 
-        <article>
-            <h2>{{ $project->name }}</h2>
+    <section class="item-list">
+        @forelse ($projects as $project)
 
-            <p>
-                Client: {{ $project->client->name }}
-            </p>
+            <article class="item-card">
+                <div class="item-card__main">
+                    <h2>
+                        <a href="/projects/{{ $project->id }}">{{ $project->name }}</a>
+                    </h2>
 
-            @if ($project->description)
-                <p>{{ $project->description }}</p>
-            @endif
+                    <p>
+                        {{ $project->client->name }}
+                    </p>
+                </div>
 
-            @if ($project->budget)
-                <p>Budget: {{ $project->budget }}</p>
-            @endif
+                <div class="item-card__meta">
+                    @if ($project->budget)
+                        <span>{{ number_format($project->budget, 2, ',', '.') }}</span>
+                    @endif
 
-            <p>Status: {{ $project->statusLabel() }}</p>
+                    <span class="status-badge status-badge--{{ $project->status->value }}">
+                        {{ $project->status->label() }}
+                    </span>
+                </div>
 
-            <a href="/projects/{{ $project->id }}/edit">
-                Edit
-            </a>
+                <p>
+                    Client: {{ $project->client->name }}
+                </p>
 
-            <a href="/projects/{{ $project->id }}">
-                View
-            </a>
+                @if ($project->description)
+                    <p>{{ $project->description }}</p>
+                @endif
 
-            <form method="POST" action="/projects/{{ $project->id }}">
-                @csrf
-                @method('DELETE')
+                @if ($project->budget)
+                    <p>Budget: {{ $project->budget }}</p>
+                @endif
 
-                <button type="submit">
-                    Delete
-                </button>
-            </form>
-        </article>
+                <p>Status: {{ $project->status->label() }}</p>
 
-    @endforeach
+                <a href="/projects/{{ $project->id }}/edit">
+                    Edit
+                </a>
+
+                <a href="/projects/{{ $project->id }}">
+                    View
+                </a>
+
+                <form method="POST" action="/projects/{{ $project->id }}">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit">
+                        Delete
+                    </button>
+                </form>
+            </article>
+
+            @empty
+
+            <div class="empty-state">
+                <p>No projects yet.</p>
+                <a href="/projects/create" class="button">
+                    Add your first project
+                </a>
+            </div>
+
+        @endforelse
+
+    </section>
 @endsection

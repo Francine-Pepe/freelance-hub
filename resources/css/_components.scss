@@ -1,0 +1,210 @@
+@use "variables" as variables;
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: variables.$spacing-md;
+    margin-bottom: variables.$spacing-xl;
+}
+
+.stat-card {
+    padding: variables.$spacing-lg;
+    background: variables.$color-surface;
+    border: 1px solid variables.$color-border;
+    border-radius: variables.$radius-md;
+
+    &__label {
+        display: block;
+        margin-bottom: variables.$spacing-sm;
+        color: variables.$color-muted;
+        font-size: 0.9rem;
+    }
+
+    &__value {
+        display: block;
+        font-size: 2rem;
+        font-weight: 600;
+        line-height: 1;
+    }
+}
+
+.project-list {
+    display: grid;
+}
+
+.project-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: variables.$spacing-lg;
+    padding: variables.$spacing-md 0;
+    border-bottom: 1px solid variables.$color-border;
+
+    &:first-child {
+        padding-top: 0;
+    }
+
+    &:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    &__main {
+        min-width: 0;
+
+        h3 {
+            margin: 0 0 variables.$spacing-xs;
+            font-size: 1rem;
+            font-weight: 600;
+
+            a {
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+
+        p {
+            margin: 0;
+            color: variables.$color-muted;
+            font-size: 0.9rem;
+        }
+    }
+
+    &__meta {
+        display: flex;
+        align-items: center;
+        gap: variables.$spacing-md;
+        flex-shrink: 0;
+
+        > span:first-child {
+            font-weight: 500;
+        }
+    }
+}
+
+.page-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: variables.$spacing-lg;
+    margin-bottom: variables.$spacing-xl;
+
+    h1 {
+        margin: 0 0 variables.$spacing-xs;
+    }
+
+    p {
+        margin: 0;
+        color: variables.$color-muted;
+    }
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    border-radius: variables.$radius-sm;
+    background: variables.$color-primary;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s ease;
+
+    &:hover {
+        background: variables.$color-primary-hover;
+    }
+}
+
+.item-list {
+    display: grid;
+    gap: variables.$spacing-sm;
+}
+
+.item-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: variables.$spacing-lg;
+    padding: variables.$spacing-lg;
+    background: variables.$color-surface;
+    border: 1px solid variables.$color-border;
+    border-radius: variables.$radius-md;
+
+    &__main {
+        min-width: 0;
+
+        h2 {
+            margin: 0 0 variables.$spacing-xs;
+            font-size: 1.1rem;
+        }
+
+        p {
+            margin: 2px 0;
+            color: variables.$color-muted;
+            font-size: 0.9rem;
+        }
+    }
+
+    &__actions {
+        flex-shrink: 0;
+
+        a {
+            color: variables.$color-muted;
+            font-size: 0.9rem;
+
+            &:hover {
+                color: variables.$color-text;
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .project-budget {
+        font-weight: 500;
+        white-space: nowrap;
+    }
+}
+
+.empty-state {
+    padding: variables.$spacing-xxl;
+    text-align: center;
+    background: variables.$color-surface;
+    border: 1px dashed variables.$color-border;
+    border-radius: variables.$radius-md;
+
+    p {
+        margin: 0 0 variables.$spacing-md;
+        color: variables.$color-muted;
+    }
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: variables.$spacing-xs variables.$spacing-sm;
+    border-radius: 999px;
+    border: 1px solid variables.$color-border;
+    background: variables.$color-bg;
+    color: variables.$color-muted;
+    font-size: 0.8rem;
+    font-weight: 500;
+    white-space: nowrap;
+
+    &--planning {
+        color: variables.$color-warning;
+    }
+
+    &--in_progress {
+        color: #416b9a;
+    }
+
+    &--completed {
+        color: variables.$color-success;
+    }
+
+    &--cancelled {
+        color: variables.$color-danger;
+    }
+}

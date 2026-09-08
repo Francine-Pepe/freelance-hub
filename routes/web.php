@@ -5,6 +5,8 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 
+Route::get('/', fn () => view('welcome'));
+
 /* backend endpoints - routes
 Route::resource => englobes all the routes (client resource) for a resource controller, in this case ClientController
 */
