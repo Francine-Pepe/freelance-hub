@@ -1,4 +1,4 @@
-@use "variables" as variables;
+@use 'variables' as variables;
 
 .container {
     width: min(1200px, calc(100% - 48px));

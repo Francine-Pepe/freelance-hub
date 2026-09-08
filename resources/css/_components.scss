@@ -1,4 +1,4 @@
-@use "variables" as variables;
+@use 'variables' as variables;
 
 .stats-grid {
     display: grid;
@@ -164,7 +164,8 @@
     .project-budget {
         font-weight: 500;
         white-space: nowrap;
-    }
+
+}
 }
 
 .empty-state {
