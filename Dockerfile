@@ -45,4 +45,4 @@ RUN mkdir -p \
 
 RUN chmod -R 775 storage bootstrap/cache
 
-CMD ["sh", "-c", "frankenphp php-server -r public/ --listen :${PORT:-80}"]
+CMD ["php-server", "-r", "public/", "--listen", ":${PORT:-80}"]
