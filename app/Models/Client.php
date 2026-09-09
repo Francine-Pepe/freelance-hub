@@ -8,7 +8,11 @@ use App\Models\Project;
 
 class Client extends Model
 {
+    protected $fillable = [
+        'name',
+    ];
+
     public function projects(): HasMany {
-        return $this->hasMany(Project::class); //A client can have many projects.
+        return $this->hasMany(Project::class);
     }
 }
