@@ -57,6 +57,6 @@ RUN mkdir -p \
 
 RUN chmod -R 775 storage bootstrap/cache
 
-# Render provides PORT at runtime.
-# FrankenPHP's default entrypoint will use SERVER_NAME.
 ENV SERVER_NAME=:80
+
+CMD ["sh", "-c", "php artisan migrate --force && frankenphp run --config /etc/caddy/Caddyfile"]
