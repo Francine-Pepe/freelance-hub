@@ -1,3 +1,19 @@
+# Stage 1: Build frontend assets
+FROM node:22-bookworm AS frontend
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY resources ./resources
+COPY vite.config.js ./
+COPY public ./public
+
+RUN npm run build
+
+
+# Stage 2: Laravel + FrankenPHP
 FROM dunglas/frankenphp:php8.3-bookworm
 
 WORKDIR /app
@@ -17,6 +33,9 @@ RUN composer install \
     --no-dev \
     --optimize-autoloader \
     --no-interaction
+
+# Copy compiled Vite assets from frontend stage
+COPY --from=frontend /app/public/build ./public/build
 
 RUN mkdir -p \
     storage/framework/cache \
