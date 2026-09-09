@@ -5,13 +5,15 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProjectController;
 
-Route::get('/test', function () {
-    return 'Laravel is working!';
-});
 
 /* backend endpoints - routes
 Route::resource => englobes all the routes (client resource) for a resource controller, in this case ClientController
 */
+
+Route::get('/', function () {
+    return view('home');
+});
+
 
 Route::resource('clients', ClientController::class);
 
