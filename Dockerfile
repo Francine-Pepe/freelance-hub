@@ -24,7 +24,7 @@ WORKDIR /app
 
 # PHP extensions
 RUN install-php-extensions \
-    pdo_sqlite \
+    pdo_pgsql \
     mbstring \
     bcmath \
     opcache \
@@ -53,12 +53,9 @@ RUN mkdir -p \
     storage/framework/cache \
     storage/framework/sessions \
     storage/framework/views \
-    bootstrap/cache \
-    database
+    bootstrap/cache
 
-RUN touch database/database.sqlite
-
-RUN chmod -R 775 storage bootstrap/cache database
+RUN chmod -R 775 storage bootstrap/cache
 
 # Render provides PORT at runtime.
 # FrankenPHP's default entrypoint will use SERVER_NAME.
