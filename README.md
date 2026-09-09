@@ -63,9 +63,33 @@ In the Vercel project settings, add these Production environment variables:
 APP_ENV=production
 APP_DEBUG=false
 APP_KEY=base64:<value from php artisan key:generate --show>
+SESSION_DRIVER=cookie
+CACHE_STORE=array
 ```
 
 Configure the `DB_*` variables for an external production database. Do not use the local SQLite database on Vercel for persistent application data, and do not commit `.env` or `APP_KEY` values.
+
+### Supabase
+
+In Supabase, open **Connect**, choose **Session pooler**, and add the connection values to Vercel as separate Production environment variables:
+
+```text
+DB_CONNECTION=pgsql
+DB_HOST=<Supabase session pooler host>
+DB_PORT=5432
+DB_DATABASE=postgres
+DB_USERNAME=<Supabase pooler username>
+DB_PASSWORD=<Supabase database password>
+DB_SSLMODE=require
+```
+
+After adding the variables, run the migrations from a machine with access to the database:
+
+```bash
+php artisan migrate --force
+```
+
+Never commit the Supabase database password. If the password contains special characters, enter it directly in Vercel rather than putting it in a shell command.
 
 ## License
 
