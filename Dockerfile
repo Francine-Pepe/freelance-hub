@@ -53,9 +53,12 @@ RUN mkdir -p \
     storage/framework/cache \
     storage/framework/sessions \
     storage/framework/views \
-    bootstrap/cache
+    bootstrap/cache \
+    database
 
-RUN chmod -R 775 storage bootstrap/cache
+RUN touch database/database.sqlite
+
+RUN chmod -R 775 storage bootstrap/cache database
 
 # Render provides PORT at runtime.
 # FrankenPHP's default entrypoint will use SERVER_NAME.
