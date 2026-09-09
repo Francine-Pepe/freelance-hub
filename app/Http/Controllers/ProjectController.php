@@ -41,7 +41,7 @@ class ProjectController extends Controller
             'client_id' => 'required|exists:clients,id',
             'description' => 'nullable',
             'budget' => 'nullable|numeric',
-            'status' => 'required|in:planning, in_progress, completed, cancelled',
+            'status' => 'required|in:planning,in_progress,completed,cancelled',
         ]);
 
         Project::create($validated);

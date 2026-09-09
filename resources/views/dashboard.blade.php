@@ -63,7 +63,7 @@
     <section>
         <h2>Project Status</h2>
         <ul>
-            @foreach ($statusCounts as $status => $count)
+            @foreach (($statusCounts ?? []) as $status => $count)
                 <li>
                     {{ $status }} {{ $count }}
                 </li>
