@@ -53,6 +53,20 @@ In order to ensure that the Laravel community is welcoming to all, please review
 
 If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
+## Deploying to Vercel
+
+This project uses `api/index.php` as its Vercel PHP function and builds the Vite assets with `npm run build`.
+
+In the Vercel project settings, add these Production environment variables:
+
+```text
+APP_ENV=production
+APP_DEBUG=false
+APP_KEY=base64:<value from php artisan key:generate --show>
+```
+
+Configure the `DB_*` variables for an external production database. Do not use the local SQLite database on Vercel for persistent application data, and do not commit `.env` or `APP_KEY` values.
+
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
