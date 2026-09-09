@@ -17,7 +17,9 @@ return [
 
     'default' => env(
         'CACHE_STORE',
-        env('APP_ENV') === 'production' ? 'array' : 'database',
+        env('APP_ENV') === 'production' || env('VERCEL') === '1'
+            ? 'array'
+            : 'database',
     ),
 
     /*
