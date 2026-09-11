@@ -59,4 +59,4 @@ RUN chmod -R 775 storage bootstrap/cache
 
 ENV SERVER_NAME=:80
 
-CMD ["sh", "-c", "php artisan migrate --force && frankenphp run --config /etc/caddy/Caddyfile"]
+CMD ["sh", "-c", "php artisan config:clear && php artisan migrate --force && frankenphp run --config /etc/caddy/Caddyfile"]
