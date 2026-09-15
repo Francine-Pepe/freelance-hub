@@ -8,17 +8,41 @@
     @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <header>
-        <nav>
-            <a href="/clients">Clients</a>
-            <a href="/projects">Projects</a>
-        </nav>
-    </header>
+    <main class="main-content">
+        <section class="app">
+            <aside class="sidebar">
+                <div class="sidebar__logo">
+                    <a href="/">Freelance Hub</a>
+                </div>
 
-    <main>
-        <div class="container">
-            @yield('content')
-        </div>
+                <nav class="sidebar__nav">
+                    <a href="/clients">
+                        <x-bytesize-work class="icon" />
+                        Clients
+
+                    </a>
+                    <a href="/projects">
+                        <x-simpleline-notebook class="icon" />
+                        Projects</a>
+
+                    {{-- <div class="corkboard">
+                        <div class="corkboard__note">
+                            <a href="/clients">Clients</a>
+                        </div>
+                        <div class="corkboard__note">
+                            <a href="/projects">Projects</a>
+                        </div>
+                    </div> --}}
+
+                </nav>
+            </aside>
+        </section>
+
+        <main>
+            <div class="main">
+                @yield('content')
+            </div>
+        </main>
     </main>
 </body>
 </html>
