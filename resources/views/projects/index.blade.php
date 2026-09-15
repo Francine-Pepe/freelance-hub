@@ -2,13 +2,20 @@
 @section('title', 'Projects')
 @section('content')
 
+    <header>
+        <div>
+            <a href="/" class="button">Home</a>
+        </div>
+    </header>
+
     <header class="page-header">
+
         <div>
             <h1>Projects</h1>
             <p>Manage your projects and track their progress.</p>
         </div>
 
-        <a href="/projects/create" class="button">Add Projects</a>
+        <a href="/projects/create" class="button" id="add-button">Add Projects</a>
 
     </header>
 
@@ -62,7 +69,7 @@
                     @csrf
                     @method('DELETE')
 
-                    <button type="submit">
+                    <button type="submit" class="delete-button">
                         Delete
                     </button>
                 </form>
