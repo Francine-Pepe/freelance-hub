@@ -1,56 +1,20 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ClientController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProjectController;
-
-
-/* backend endpoints - routes
-Route::resource => englobes all the routes (client resource) for a resource controller, in this case ClientController
-*/
 
 Route::get('/', function () {
-    return view('home');
-});
-
-
-Route::resource('clients', ClientController::class);
-
-Route::resource('projects', ProjectController::class);
-
-Route::get('/dashboard', [DashboardController::class, 'index']);
-
-/*
-CLIENT RESOURCE
-
-index   → /clients
-create  → /clients/create
-store   → POST /clients
-show    → /clients/{client}
-edit    → /clients/{client}/edit
-update  → PUT /clients/{client}
-destroy → DELETE /clients/{client}
-*/
-
-/* Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return "Welcome to my freelance dashboard!";
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index']);
-
-Route::get('/clients', [ClientController::class, 'index']);
-
-Route::get('/clients/create', [ClientController::class, 'create']);
-
-Route::post('/clients', [ClientController::class, 'store']);
-
-Route::get('/clients/{client}/edit', [ClientController::class, 'edit']);
-
-Route::put('/clients/{client}', [ClientController::class, 'update']);
-
-Route::delete('/clients/{client}', [ClientController::class, 'destroy']); */
+require __DIR__.'/auth.php';

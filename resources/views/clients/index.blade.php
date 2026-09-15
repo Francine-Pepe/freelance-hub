@@ -4,13 +4,19 @@
 
 @section('content')
 
+    <header>
+        <div>
+            <a href="/" class="button">Home</a>
+        </div>
+    </header>
+
     <header class="page-header">
         <div>
             <h1>Clients</h1>
             <p>Manage your clients and their projects.</p>
         </div>
 
-        <a href="/clients/create">Add Client</a>
+        <a href="/clients/create" class="button" id="add-button">Add Client</a>
     </header>
 
     <section class="item-list">
@@ -20,7 +26,7 @@
 
                 <div class="item-card__main">
                     <h2>
-                        <a href="/clients/{{ $client->id }}">
+                        <a href="/clients/{{ $client->id }}" >
                             {{ $client->name }}
                         </a>
                     </h2>
@@ -46,7 +52,7 @@
                     <form method="POST" action="/clients/{{ $client->id }}">
                     @csrf
                     @method('DELETE')
-                    <button type="submit">Delete</button>
+                    <button type="submit" class="delete-button">Delete</button>
                 </form>
                 </div>
             </article>

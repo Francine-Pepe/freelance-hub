@@ -2,3 +2,95 @@
 @use "base";
 @use "layout";
 @use "components";
+@use "home";
+@use "corkBoard";
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+body {
+    font-family: variables.$font-family;
+    background: variables.$color-bg;
+    color: variables.$color-text;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.app {
+    min-height: 100vh;
+    display: flex;
+}
+
+.main-content {
+    display: flex;
+}
+
+// Sidebar
+
+.sidebar {
+    max-width: 20vw;
+    min-height: 100vh;
+    padding: variables.$spacing-xl variables.$spacing-lg;
+    background: variables.$color-text;
+    color: variables.$color-bg;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar__logo {
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    border-bottom: 1px solid variables.$color-secondary;
+    padding-bottom: variables.$spacing-lg;
+    width: 20vw;
+}
+
+.sidebar__nav {
+    display: flex;
+    flex-direction: column;
+    gap: variables.$spacing-sm;
+    margin-top: variables.$spacing-xxl;
+
+    a {
+        padding: variables.$spacing-md;
+        font-size: 0.95rem;
+        color: variables.$color-bg;
+        border: 1px solid variables.$color-secondary;
+        border-radius: variables.$radius-sm;
+        text-align: left;
+        transition: color 180ms ease;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: variables.$spacing-lg;
+
+        &:hover {
+            color: variables.$color-orange;
+        }
+    }
+}
+
+.icon {
+    width: variables.$spacing-lg;
+}
+
+// Main content
+
+.main {
+    flex: 1;
+    min-height: 100%;
+    min-width: 0;
+    margin: 0 auto;
+}
