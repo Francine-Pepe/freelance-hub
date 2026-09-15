@@ -1,25 +1,71 @@
-$font-family: 'Instrument Sans', sans-serif;
+// Fluid sizing helper
 
-$color-bg: #f7f6f2;
+@function fluid-size($min, $max, $min-vw: 20rem, $max-vw: 96rem) {
+    $slope: ($max - $min) / ($max-vw - $min-vw);
+    $intercept: $min - $slope * $min-vw;
+
+    @return clamp(#{$min}, calc(#{$intercept} + #{$slope * 100}vw), #{$max});
+}
+
+// Typography
+$font-family: "Instrument Sans", sans-serif;
+
+// Fluid type scale
+
+$font-size-xs: fluid-size(0.75rem, 0.875rem); // 12px → 14px
+$font-size-sm: fluid-size(0.875rem, 1rem); // 14px → 16px
+$font-size-base: fluid-size(1rem, 1.125rem); // 16px → 18px
+$font-size-lg: fluid-size(1.125rem, 1.25rem); // 18px → 20px
+$font-size-xl: fluid-size(1.25rem, 1.5rem); // 20px → 24px
+$font-size-2xl: fluid-size(1.5rem, 2rem); // 24px → 32px
+$font-size-3xl: fluid-size(1.875rem, 2.5rem); // 30px → 40px
+$font-size-4xl: fluid-size(2.25rem, 3.5rem); // 36px → 56px
+$font-size-5xl: fluid-size(2.75rem, 4.5rem); // 44px → 72px, e.g. hero headline
+
+// Colors
+$color-bg: #fbffff;
 $color-surface: #ffffff;
-$color-text: #252525;
-$color-muted: #6f6f6f;
-$color-border: #deddd8;
 
-$color-primary: #252525;
-$color-primary-hover: #444444;
+$color-text: #00000f;
+$color-muted: #526070;
 
+$color-primary: #002a54;
+$color-primary-hover: #001d3a;
+$color-secondary: #7cbdd1;
+
+$color-accent: #8aa8ff;
+$color-accent-soft: #e9eeff;
+
+$color-orange: #ff9800;
+$color-orange-hover: #e88900;
+
+$color-border: #d9e1ea;
+
+// Status
 $color-success: #3f7657;
-$color-warning: #a66b16;
-$color-danger: #a64646;
+$color-warning: #ff9800;
+$color-danger: #b94040;
+$color-danger-hover: #a12d2d;
 
-$radius-sm: 6px;
-$radius-md: 10px;
-$radius-lg: 16px;
+// Radius
+$radius-sm: 0.375rem; // 6px
+$radius-md: 0.625rem; // 10px
+$radius-lg: 1rem; // 16px
+$radius-xl: 1.5rem; // 24px
 
-$spacing-xs: 4px;
-$spacing-sm: 8px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 40px;
-$spacing-xxl: 64px;
+// Spacing
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2.5rem; // 40px
+$spacing-xxl: 4rem; // 64px
+$spacing-page: clamp(1rem, 2vw, 3rem);
+
+// Z-index scale
+$z-base: 0;
+$z-content: 1;
+$z-overlay: 10;
+$z-dropdown: 100;
+$z-modal: 1000;
+$z-toast: 1100;
