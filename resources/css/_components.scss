@@ -1,4 +1,4 @@
-@use 'variables' as variables;
+@use "variables" as variables;
 
 .stats-grid {
     display: grid;
@@ -100,20 +100,34 @@
     }
 }
 
-.button {
+button,
+.delete-button,
+#add-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     padding: variables.$spacing-sm variables.$spacing-md;
     border-radius: variables.$radius-sm;
-    background: variables.$color-primary;
-    color: #fff;
+    color: variables.$color-bg;
     font-size: 0.9rem;
     font-weight: 500;
     transition: background 0.2s ease;
+}
+
+#add-button {
+    background: variables.$color-primary;
 
     &:hover {
         background: variables.$color-primary-hover;
+    }
+}
+
+.delete-button {
+    background-color: variables.$color-danger;
+    border: none;
+
+    &:hover {
+        background-color: variables.$color-danger-hover;
     }
 }
 
@@ -164,8 +178,7 @@
     .project-budget {
         font-weight: 500;
         white-space: nowrap;
-
-}
+    }
 }
 
 .empty-state {
