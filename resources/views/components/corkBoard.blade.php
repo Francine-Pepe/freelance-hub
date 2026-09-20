@@ -1,5 +1,6 @@
 <section class="corkboard-component">
     <div class="corkboard">
+        <h1>Little reminders</h1>
         <div class="corkboard__notes">
             @forelse ($reminders as $reminder)
                 <x-post-it :reminder="$reminder" />
