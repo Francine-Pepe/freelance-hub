@@ -13,15 +13,19 @@ class ProjectController extends Controller
      */
     public function index()
     {
-            $projects = Project::with('client')
-                ->whereHas('client', function ($query) {
-                    $query->where('user_id', Auth::id());
-                })
-                ->get();
+        if (!Auth::check()) {
+        return view('projects.guest');
+        }
+        
+        $projects = Project::with('client')
+            ->whereHas('client', function ($query) {
+                $query->where('user_id', Auth::id());
+            })
+            ->get();
 
-            return view('projects.index', [
-                'projects' => $projects
-            ]);
+        return view('projects.index', [
+            'projects' => $projects
+        ]);
     }
 
     /**
@@ -131,7 +135,7 @@ class ProjectController extends Controller
     {
         abort_unless($project->client->user_id === Auth::id(),
         403);
-        
+
         $project->delete();
         return redirect('/projects');
 

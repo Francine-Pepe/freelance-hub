@@ -8,6 +8,9 @@ use App\Models\Client;
 class ClientController extends Controller
 {
     public function index(){
+        if (!Auth::check()) {
+            return view('clients.guest');
+        }
         $clients = Client::where('user_id', Auth::id())->get();
 
         return view('clients.index', [
