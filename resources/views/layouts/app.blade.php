@@ -28,7 +28,7 @@
 
                     @auth
                         <a href="{{ route('dashboard') }}">
-                            <x-radix-dashboard class="icon" />
+                            {{-- <x-radix-dashboard class="icon" /> --}}
                             Dashboard
                         </a>
                     @endauth
