@@ -26,6 +26,13 @@
                         Projects
                     </a>
 
+                    @auth
+                        <a href="{{ route('dashboard') }}">
+                            <x-radix-dashboard class="icon" />
+                            Dashboard
+                        </a>
+                    @endauth
+
                     @guest
                         <a href="{{ route('login') }}" class="login-button">
                             <x-simpleline-login class="icon" />

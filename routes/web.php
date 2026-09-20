@@ -10,14 +10,26 @@ Route::get('/', function () {
     return view('home');
 })->name('home');
 
+
+// Public pages
+Route::get('/clients', [ClientController::class, 'index'])
+    ->name('clients.index');
+
+Route::get('/projects', [ProjectController::class, 'index'])
+    ->name('projects.index');
+
+
+// Protected pages
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->name('dashboard');
 
-    Route::resource('clients', ClientController::class);
+    Route::resource('clients', ClientController::class)
+        ->except(['index']);
 
-    Route::resource('projects', ProjectController::class);
+    Route::resource('projects', ProjectController::class)
+        ->except(['index']);
 
     Route::get('/profile', [ProfileController::class, 'edit'])
         ->name('profile.edit');
