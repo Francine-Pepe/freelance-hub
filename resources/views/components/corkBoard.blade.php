@@ -1,6 +1,7 @@
 <section class="corkboard-component">
     <div class="corkboard">
         <h1>Little reminders</h1>
+
         <div class="corkboard__notes">
             @forelse ($reminders as $reminder)
                 <x-post-it :reminder="$reminder" />
@@ -10,9 +11,9 @@
                 </p>
             @endforelse
         </div>
-
     </div>
-    <form
+</section>
+    {{-- <form
         method="POST"
         action="{{ route('reminders.store') }}"
         class="corkboard__form"
@@ -35,5 +36,5 @@
                 Add
             </button>
         </div>
-    </form>
-</section>
+    </form> --}}
+{{-- </section> --}}
