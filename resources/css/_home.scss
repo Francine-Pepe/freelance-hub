@@ -44,7 +44,9 @@
         }
 
         h1 {
-            padding-top: 2rem;
+            /* padding-top: 2rem; */
+            font-size: variables.$font-size-5xl;
+            line-height: 0.95;
         }
     }
 

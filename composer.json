@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.3",
         "codeat3/blade-bytesize-icons": "^1.7",
+        "codeat3/blade-radix-icons": "^1.9",
         "codeat3/blade-simple-line-icons": "^1.6",
         "laravel/framework": "^13.17",
         "laravel/tinker": "^3.0"

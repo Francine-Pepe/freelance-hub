@@ -10,7 +10,7 @@
 
     h1 {
         margin: 0;
-        font-size: 2.5rem;
+        font-size: variables.$font-size-3xl;
         font-weight: 600;
         color: variables.$color-text;
     }
@@ -32,7 +32,7 @@
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
     background: variables.$color-bg;
-
+    margin-bottom: variables.$spacing-lg;
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-sm;
