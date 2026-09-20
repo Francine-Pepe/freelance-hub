@@ -1,4 +1,6 @@
 @use "variables" as variables;
+@use "breakpoints";
+@use "mixins";
 
 .project-form {
     width: min(100%, 40rem);
@@ -42,19 +44,7 @@
     input,
     select,
     textarea {
-        width: 100%;
-        padding: variables.$spacing-md;
-        border: 1px solid variables.$color-secondary;
-        border-radius: variables.$radius-sm;
-        background: variables.$color-bg;
-        color: variables.$color-text;
-        font: inherit;
-        outline: none;
-        transition: border-color 180ms ease;
-
-        &:focus {
-            border-color: variables.$color-orange;
-        }
+        @include mixins.form-control;
     }
 
     textarea {
@@ -68,34 +58,31 @@
 }
 
 .project-form__actions {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: variables.$spacing-md;
-    margin-top: variables.$spacing-md;
+    @include mixins.form-actions;
 
     a {
         padding: variables.$spacing-md variables.$spacing-lg;
         color: variables.$color-text;
         font-size: 0.9rem;
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
 
-        &:hover {
-            color: variables.$color-orange;
-        }
+        @include mixins.underline-link;
     }
 
     button {
         padding: variables.$spacing-md variables.$spacing-lg;
+
         border: 1px solid variables.$color-orange;
         border-radius: variables.$radius-sm;
+
         background: variables.$color-orange;
         color: variables.$color-bg;
+
         font: inherit;
         font-size: 0.9rem;
         font-weight: 600;
+
         cursor: pointer;
+
         transition:
             background 180ms ease,
             color 180ms ease,
@@ -108,20 +95,13 @@
     }
 }
 
-@media (max-width: 40rem) {
+@include breakpoints.down(sm) {
     .project-form {
         width: 100%;
         padding: variables.$spacing-lg;
     }
 
     .project-form__actions {
-        flex-direction: column-reverse;
-        align-items: stretch;
-
-        a,
-        button {
-            width: 100%;
-            text-align: center;
-        }
+        @include mixins.form-actions-mobile;
     }
 }

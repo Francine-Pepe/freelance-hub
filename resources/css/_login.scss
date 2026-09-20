@@ -1,12 +1,14 @@
 @use "variables" as variables;
+@use "mixins";
 
 .login {
     min-height: 100vh;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: variables.$spacing-xl;
 
+    padding: variables.$spacing-xl;
 
     &__card {
         width: min(100%, 32rem);
@@ -17,10 +19,12 @@
 
         h1 {
             margin: 0;
+
             font-size: 2.5rem;
             font-weight: 600;
-            color: variables.$color-text;
             letter-spacing: -0.03em;
+
+            color: variables.$color-text;
         }
 
         p {
@@ -47,19 +51,7 @@
 
         input[type="email"],
         input[type="password"] {
-            width: 100%;
-            padding: variables.$spacing-md;
-            border: 1px solid variables.$color-secondary;
-            border-radius: variables.$radius-sm;
-            background: variables.$color-bg;
-            color: variables.$color-text;
-            font: inherit;
-            outline: none;
-            transition: border-color 180ms ease;
-
-            &:focus {
-                border-color: variables.$color-orange;
-            }
+            @include mixins.form-control;
         }
     }
 
@@ -67,17 +59,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
         gap: variables.$spacing-md;
+
         font-size: 0.85rem;
 
         a {
             color: variables.$color-text;
-            text-decoration: underline;
-            text-underline-offset: 0.2em;
 
-            &:hover {
-                color: variables.$color-orange;
-            }
+            @include mixins.underline-link;
         }
     }
 
@@ -85,6 +75,7 @@
         display: flex;
         align-items: center;
         gap: variables.$spacing-sm;
+
         cursor: pointer;
 
         input {
@@ -95,14 +86,19 @@
     &__button {
         width: 100%;
         padding: variables.$spacing-md;
-        background-color: variables.$color-orange;
+
+        background: variables.$color-orange;
+
         border: 1px solid variables.$color-orange;
         border-radius: variables.$radius-sm;
-        background: variables.$color-orange;
+
         color: variables.$color-text;
+
         font: inherit;
         font-weight: 600;
+
         cursor: pointer;
+
         transition:
             background 180ms ease,
             color 180ms ease;
@@ -115,14 +111,7 @@
     }
 }
 
-/* .sidebar__user {
-    margin-top: variables.$spacing-lg;
-    padding-top: variables.$spacing-lg;
-    border-top: 1px solid variables.$color-secondary;
-    display: flex;
-    flex-direction: column;
-    gap: variables.$spacing-md;
-} */
+/* Sidebar logout */
 
 .sidebar__user-name {
     font-size: 0.9rem;
@@ -132,19 +121,24 @@
 .sidebar__logout {
     width: 100%;
     padding: variables.$spacing-md;
+
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
+
     background: transparent;
     color: variables.$color-bg;
+
     font: inherit;
     text-align: left;
+
     cursor: pointer;
-    transition: color 180ms ease, border-color 180ms ease;
+
+    transition:
+        color 180ms ease,
+        border-color 180ms ease;
 
     &:hover {
         color: variables.$color-orange;
         border-color: variables.$color-orange;
     }
 }
-
-

@@ -1,4 +1,6 @@
 @use "variables" as variables;
+@use "breakpoints";
+@use "mixins";
 
 .project-show {
     width: min(100%, 60rem);
@@ -6,10 +8,8 @@
 }
 
 .project-show__header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
+    @include mixins.flex-between(flex-end, variables.$spacing-lg);
+
     margin-bottom: variables.$spacing-xxl;
 
     h1 {
@@ -25,22 +25,21 @@
 
         a {
             color: variables.$color-text;
-            text-decoration: underline;
-            text-underline-offset: 0.2em;
 
-            &:hover {
-                color: variables.$color-orange;
-            }
+            @include mixins.underline-link;
         }
     }
 }
 
 .project-show__edit {
     padding: variables.$spacing-md variables.$spacing-lg;
+
     border: 1px solid variables.$color-orange;
     border-radius: variables.$radius-sm;
+
     background: variables.$color-orange;
     color: variables.$color-bg;
+
     font-size: 0.9rem;
     font-weight: 600;
 
@@ -58,12 +57,14 @@
 
 .project-show__detail {
     padding: variables.$spacing-lg;
+
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
 
     span {
         display: block;
         margin-bottom: variables.$spacing-sm;
+
         font-size: 0.8rem;
         color: variables.$color-secondary;
     }
@@ -91,15 +92,11 @@
     display: inline-block;
     margin-top: variables.$spacing-xxl;
     font-size: 0.9rem;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
 
-    &:hover {
-        color: variables.$color-orange;
-    }
+    @include mixins.underline-link;
 }
 
-@media (max-width: 40rem) {
+@include breakpoints.down(sm) {
     .project-show {
         width: 100%;
         padding: variables.$spacing-lg;
