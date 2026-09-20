@@ -4,6 +4,12 @@
 
 @section('content')
 
+    <h1 style="background: red; color: white; padding: 30px; font-size: 40px;">
+
+        CORKBOARD TEST
+
+    </h1>
+
     <section class="dashboard-page-container">
 
         <section class="dashboard">
@@ -92,12 +98,11 @@
                     </div>
                 @endif
             </section>
+            <section class="little-reminders">
+                <h2>TEST — Corkboard area</h2>
+                <x-cork-board :reminders="$reminders" />
+            </section>
         </section>
-
-{{--         <section class="little-reminders">
-            <x-corkboard :reminders="$reminders" />
-        </section> --}}
-
     </section>
 
 @endsection
