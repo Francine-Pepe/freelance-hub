@@ -2,15 +2,7 @@
     <div class="corkboard">
         <h1>Little reminders</h1>
 
-        <div class="corkboard__notes">
-            @forelse ($reminders as $reminder)
-                <x-post-it :reminder="$reminder" />
-            @empty
-                <p class="corkboard__empty">
-                    No reminders yet.
-                </p>
-            @endforelse
-        </div>
+        <p>This is the corkboard.</p>
     </div>
 </section>
     {{-- <form
