@@ -49,17 +49,17 @@
                 </div>
 
                 <div class="dashboard__status">
-                    <span>Planning</span>
+                    <span>In Progress</span>
                     <strong>{{ $statusCounts['in_progress'] }}</strong>
                 </div>
 
                 <div class="dashboard__status">
-                    <span>Planning</span>
+                    <span>Completed</span>
                     <strong>{{ $statusCounts['completed'] }}</strong>
                 </div>
 
                 <div class="dashboard__status">
-                    <span>Planning</span>
+                    <span>Canceled</span>
                     <strong>{{ $statusCounts['cancelled'] }}</strong>
                 </div>
             </div>
