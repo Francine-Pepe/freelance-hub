@@ -1,0 +1,96 @@
+@use "variables" as variables;
+
+.register {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: variables.$spacing-xl;
+    background: variables.$color-bg;
+
+    &__card {
+        width: min(100%, 32rem);
+    }
+
+    &__header {
+        margin-bottom: variables.$spacing-xxl;
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: variables.$color-text;
+            letter-spacing: -0.03em;
+        }
+
+        p {
+            margin: variables.$spacing-sm 0 0;
+            color: variables.$color-secondary;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$spacing-lg;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$spacing-sm;
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: variables.$spacing-md;
+            border: 1px solid variables.$color-secondary;
+            border-radius: variables.$radius-sm;
+            background: variables.$color-bg;
+            color: variables.$color-text;
+            font: inherit;
+            outline: none;
+            transition: border-color 180ms ease;
+
+            &:focus {
+                border-color: variables.$color-orange;
+            }
+        }
+    }
+
+    &__options {
+        font-size: 0.85rem;
+
+        a {
+            color: variables.$color-text;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                color: variables.$color-orange;
+            }
+        }
+    }
+
+    &__button {
+        width: 100%;
+        padding: variables.$spacing-md;
+        background: variables.$color-orange;
+        border: none;
+        border-radius: variables.$radius-sm;
+        color: variables.$color-bg;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+
+        &:hover {
+            background: variables.$color-text;
+        }
+    }
+}

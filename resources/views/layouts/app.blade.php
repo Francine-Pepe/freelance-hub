@@ -23,7 +23,32 @@
                     </a>
                     <a href="/projects">
                         <x-simpleline-notebook class="icon" />
-                        Projects</a>
+                        Projects
+                    </a>
+
+                    @guest
+                        <a href="{{ route('login') }}" class="login-button">
+                            <x-simpleline-login class="icon" />
+                            Login
+                        </a>
+                    @endguest
+
+                    @auth
+                        <div class="sidebar__user">
+                            {{-- <span class="sidebar__user-name">
+                                {{ Auth::user()->name }}
+                            </span> --}}
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="sidebar__logout">
+                                    <x-simpleline-logout class="icon" />
+                                    Logout
+                                </button>
+
+                            </form>
+                        </div>
+                    @endauth
 
                     {{-- <div class="corkboard">
                         <div class="corkboard__note">

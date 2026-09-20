@@ -1,0 +1,111 @@
+@use "variables" as variables;
+
+.client-form {
+    width: min(100%, 40rem);
+    padding: variables.$spacing-xl;
+
+    &__header {
+        /* margin-bottom: variables.$spacing-xxl; */
+
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: variables.$color-text;
+        }
+
+        p {
+            margin: variables.$spacing-sm 0 0;
+            color: variables.$color-secondary;
+        }
+    }
+
+    &__form {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$spacing-lg;
+    }
+
+    &__field {
+        display: flex;
+        flex-direction: column;
+        gap: variables.$spacing-sm;
+
+        label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: variables.$color-text;
+        }
+
+        input {
+            width: 100%;
+            padding: variables.$spacing-md;
+            border: 1px solid variables.$color-secondary;
+            border-radius: variables.$radius-sm;
+            background: variables.$color-bg;
+            color: variables.$color-text;
+            font: inherit;
+            outline: none;
+            transition: border-color 180ms ease;
+
+            &:focus {
+                border-color: variables.$color-orange;
+            }
+        }
+    }
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: variables.$spacing-md;
+        margin-top: variables.$spacing-md;
+
+        a {
+            padding: variables.$spacing-md variables.$spacing-lg;
+            color: variables.$color-text;
+            font-size: 0.9rem;
+            text-decoration: underline;
+            text-underline-offset: 0.2em;
+
+            &:hover {
+                color: variables.$color-orange;
+            }
+        }
+
+        button {
+            padding: variables.$spacing-md variables.$spacing-lg;
+            border: 1px solid variables.$color-orange;
+            border-radius: variables.$radius-sm;
+            background: variables.$color-orange;
+            color: variables.$color-bg;
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+
+            &:hover {
+                background: variables.$color-text;
+                border-color: variables.$color-text;
+            }
+        }
+    }
+}
+
+@media (max-width: 40rem) {
+    .client-form {
+        width: 100%;
+        padding: variables.$spacing-lg;
+    }
+
+    .client-form__actions {
+        flex-direction: column-reverse;
+        align-items: stretch;
+
+        a,
+        button {
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

@@ -2,89 +2,90 @@
 @section('title', 'Projects')
 @section('content')
 
-    <header>
-        <div>
-            <a href="/" class="button">Home</a>
-        </div>
-    </header>
-
     <header class="page-header">
 
-        <div>
-            <h1>Projects</h1>
-            <p>Manage your projects and track their progress.</p>
-        </div>
+    <div class="page-header__projects">
+        <h1>Projects</h1>
+        <p>Manage your projects and track their progress.</p>
+    </div>
 
-        <a href="/projects/create" class="button" id="add-button">Add Projects</a>
+    <a href="/projects/create" class="button" id="add-button">
+        Add project
+    </a>
 
     </header>
 
     <section class="item-list">
+
         @forelse ($projects as $project)
 
             <article class="item-card">
+
                 <div class="item-card__main">
+
                     <h2>
-                        <a href="/projects/{{ $project->id }}">{{ $project->name }}</a>
+                        <a href="/projects/{{ $project->id }}">
+                            {{ $project->name }}
+                        </a>
                     </h2>
 
-                    <p>
-                        {{ $project->client->name }}
-                    </p>
+                    @if ($project->client)
+                        <p>{{ $project->client->name }}</p>
+                    @endif
+
                 </div>
 
                 <div class="item-card__meta">
+
                     @if ($project->budget)
-                        <span>{{ number_format($project->budget, 2, ',', '.') }}</span>
+                        <span>
+                            €{{ number_format($project->budget, 2, ',', '.') }}
+                        </span>
                     @endif
 
                     <span class="status-badge status-badge--{{ $project->status->value }}">
                         {{ $project->status->label() }}
                     </span>
+
                 </div>
 
-                <p>
-                    Client: {{ $project->client->name }}
-                </p>
+                <div class="item-card__actions">
 
-                @if ($project->description)
-                    <p>{{ $project->description }}</p>
-                @endif
+                    <a href="/projects/{{ $project->id }}/edit">
+                        Edit
+                    </a>
 
-                @if ($project->budget)
-                    <p>Budget: {{ $project->budget }}</p>
-                @endif
+                    <a href="/projects/{{ $project->id }}">
+                        View
+                    </a>
 
-                <p>Status: {{ $project->status->label() }}</p>
+                    <form method="POST" action="/projects/{{ $project->id }}">
+                        @csrf
+                        @method('DELETE')
 
-                <a href="/projects/{{ $project->id }}/edit">
-                    Edit
-                </a>
+                        <button type="submit" class="delete-button">
+                            Delete
+                        </button>
+                    </form>
 
-                <a href="/projects/{{ $project->id }}">
-                    View
-                </a>
+                </div>
 
-                <form method="POST" action="/projects/{{ $project->id }}">
-                    @csrf
-                    @method('DELETE')
-
-                    <button type="submit" class="delete-button">
-                        Delete
-                    </button>
-                </form>
             </article>
 
-            @empty
+        @empty
 
             <div class="empty-state">
+
                 <p>No projects yet.</p>
+
                 <a href="/projects/create" class="button">
                     Add your first project
                 </a>
+
             </div>
 
         @endforelse
 
     </section>
+
 @endsection

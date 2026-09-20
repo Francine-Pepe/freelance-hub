@@ -4,32 +4,66 @@
 
 @section('content')
 
-    <h1>Add client</h1>
+    <section class="client-form">
+        <header class="client-form__header">
+            <h1>Add Client</h1>
+            <p>Create a new client for your freelance projects.</p>
+        </header>
 
-    <form method="POST" action="/clients">
-        @csrf
-        {{-- @csrf is Laravel’s security protection for forms. --}}
-        <label>
-            Name
-            <input type="text" name="name">
-        </label>
-        <label>
-            Email
-            <input type="email" name="email">
-        </label>
-        <label>
-            Company
-            <input type="text" name="company">
-        </label>
-        <label>
-            Phone
-            <input type="text" name="phone">
-        </label>
+        <form method="POST" action="/clients" class="client-form__form">
+            @csrf
 
-        <button type="submit">
-            Save Client
-        </button>
-    </form>
+            <div class="client-form__field">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value="{{ old('name') }}"
+                    required
+                >
+            </div>
+
+            <div class="client-form__field">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value="{{ old('email') }}"
+                >
+            </div>
+
+            <div class="client-form__field">
+                <label for="company">Company</label>
+                <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value="{{ old('company') }}"
+                >
+            </div>
+
+            <div class="client-form__field">
+                <label for="phone">Phone</label>
+                <input
+                    type="text"
+                    id="phone"
+                    name="phone"
+                    value="{{ old('phone') }}"
+                >
+            </div>
+
+            <div class="client-form__actions">
+                <a href="/clients">Cancel</a>
+
+                <button type="submit">
+                    Save client
+                </button>
+            </div>
+
+        </form>
+
+    </section>
 
 @endsection
-

@@ -12,11 +12,11 @@
         position: absolute;
         inset: 0;
         z-index: 1;
-        background: linear-gradient(
-            to bottom,
+        /* background: linear-gradient(
+            to right,
             rgba(variables.$color-text, 0.05) 0%,
-            rgba(variables.$color-text, 0.55) 100%
-        );
+            rgba(variables.$color-text, 0.25) 100%
+        ); */
         pointer-events: none;
     }
 

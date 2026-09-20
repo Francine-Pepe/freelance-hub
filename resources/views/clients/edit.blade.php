@@ -4,42 +4,70 @@
 
 @section('content')
 
-    <h1>Edit Client</h1>
+    <section class="client-form">
 
-    <form method="POST" action="/clients/{{ $client->id }}">
+    <header class="client-form__header">
+        <h1>Edit client</h1>
+        <p>Update the information for this client.</p>
+    </header>
+
+    <form method="POST" action="/clients/{{ $client->id }}" class="client-form__form">
         @csrf
         @method('PUT')
 
-        <label>
-            Name
-            <input type="text" name="name" value="{{ $client->name }}" >
-        </label>
+        <div class="client-form__field">
+            <label for="name">Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                value="{{ $client->name }}"
+                required
+            >
+        </div>
 
-        <br>
+        <div class="client-form__field">
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                value="{{ $client->email }}"
+            >
+        </div>
 
-        <label>
-            Email
-            <input type="email" name="email" value="{{ $client->email }}" >
-        </label>
+        <div class="client-form__field">
+            <label for="company">Company</label>
+            <input
+                type="text"
+                id="company"
+                name="company"
+                value="{{ $client->company }}"
+            >
+        </div>
 
-        <br>
+        <div class="client-form__field">
+            <label for="phone">Phone</label>
+            <input
+                type="text"
+                id="phone"
+                name="phone"
+                value="{{ $client->phone }}"
+            >
+        </div>
 
-        <label>
-            Company
-            <input type="text" name="company" value="{{ $client->company }}" >
-        </label>
+        <div class="client-form__actions">
+            <a href="/clients/{{ $client->id }}">
+                Cancel
+            </a>
 
-        <br>
-
-        <label>
-            Phone
-            <input type="text" name="phone" value="{{ $client->phone }}" >
-        </label>
-
-        <br>
-
-        <button type="submit">Update Client</button>
+            <button type="submit">
+                Update client
+            </button>
+        </div>
 
     </form>
+
+</section>
 
 @endsection
