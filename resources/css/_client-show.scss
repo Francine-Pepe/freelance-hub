@@ -1,0 +1,167 @@
+@use "variables" as variables;
+
+.client-show {
+    width: min(100%, 60rem);
+    padding: variables.$spacing-xl;
+}
+
+.client-show__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: variables.$spacing-xxl;
+    margin-bottom: variables.$spacing-xxl;
+
+    h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: variables.$color-text;
+    }
+
+    p {
+        margin: variables.$spacing-sm 0 0;
+        color: variables.$color-secondary;
+    }
+}
+
+.client-show__edit {
+    padding: variables.$spacing-md variables.$spacing-lg;
+    border: 1px solid variables.$color-orange;
+    border-radius: variables.$radius-sm;
+    background: variables.$color-orange;
+    color: variables.$color-bg;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition:
+        background 180ms ease,
+        border-color 180ms ease;
+
+    &:hover {
+        background: variables.$color-text;
+        border-color: variables.$color-text;
+    }
+}
+
+.client-show__details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: variables.$spacing-lg;
+    margin-bottom: variables.$spacing-xxl;
+}
+
+.client-show__detail {
+    padding: variables.$spacing-lg;
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$radius-sm;
+
+    span {
+        display: block;
+        margin-bottom: variables.$spacing-sm;
+        font-size: 0.8rem;
+        color: variables.$color-secondary;
+    }
+
+    p {
+        margin: 0;
+        font-size: 1rem;
+        color: variables.$color-text;
+    }
+}
+
+.client-show__projects {
+    margin-top: variables.$spacing-xxl;
+
+    header {
+        margin-bottom: variables.$spacing-lg;
+
+        h2 {
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+    }
+}
+
+.client-show__project {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: variables.$spacing-lg;
+    padding: variables.$spacing-lg 0;
+    border-top: 1px solid variables.$color-secondary;
+
+    &:last-of-type {
+        border-bottom: 1px solid variables.$color-secondary;
+    }
+
+    h3 {
+        margin: 0;
+
+        a {
+            color: variables.$color-text;
+            font-size: 1rem;
+            font-weight: 600;
+
+            &:hover {
+                color: variables.$color-orange;
+            }
+        }
+    }
+
+    p {
+        margin: variables.$spacing-xs 0 0;
+        font-size: 0.85rem;
+        color: variables.$color-secondary;
+    }
+}
+
+.client-show__status {
+    font-size: 0.85rem;
+    text-transform: capitalize;
+}
+
+.client-show__empty {
+    padding: variables.$spacing-lg 0;
+    border-top: 1px solid variables.$color-secondary;
+    border-bottom: 1px solid variables.$color-secondary;
+    color: variables.$color-secondary;
+}
+
+.client-show__back {
+    display: inline-block;
+    margin-top: variables.$spacing-xxl;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+
+    &:hover {
+        color: variables.$color-orange;
+    }
+}
+
+@media (max-width: 40rem) {
+    .client-show {
+        width: 100%;
+        padding: variables.$spacing-lg;
+    }
+
+    .client-show__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .client-show__edit {
+        width: 100%;
+        text-align: center;
+    }
+
+    .client-show__details {
+        grid-template-columns: 1fr;
+    }
+
+    .client-show__project {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

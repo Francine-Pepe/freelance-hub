@@ -4,6 +4,14 @@
 @use "components";
 @use "home";
 @use "corkBoard";
+@use "login";
+@use "dashboard";
+@use "register";
+@use "clients";
+@use "client-form";
+@use "client-show";
+@use "project-form";
+@use "project-show";
 
 * {
     box-sizing: border-box;
@@ -39,7 +47,7 @@ a {
 // Sidebar
 
 .sidebar {
-    max-width: 20vw;
+    width: 20vw;
     min-height: 100vh;
     padding: variables.$spacing-xl variables.$spacing-lg;
     background: variables.$color-text;
@@ -49,12 +57,16 @@ a {
 }
 
 .sidebar__logo {
+    border-bottom: 1px solid variables.$color-secondary;
+}
+
+.sidebar__logo, .dashboard__header h1, .page-header .clients-header h1, .client-form__header h1, .client-show__header h1, .project-form__header h1, .page-header__projects h1 {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-    border-bottom: 1px solid variables.$color-secondary;
-    padding-bottom: variables.$spacing-lg;
-    width: 20vw;
+    padding: 0 0 variables.$spacing-lg variables.$spacing-lg;
+    margin-left: calc(-1 * variables.$spacing-lg);
+    margin-right: calc(-1 * variables.$spacing-lg);
 }
 
 .sidebar__nav {
@@ -63,7 +75,7 @@ a {
     gap: variables.$spacing-sm;
     margin-top: variables.$spacing-xxl;
 
-    a {
+    a, .sidebar__logout {
         padding: variables.$spacing-md;
         font-size: 0.95rem;
         color: variables.$color-bg;
@@ -77,7 +89,21 @@ a {
         gap: variables.$spacing-lg;
 
         &:hover {
-            color: variables.$color-orange;
+            background-color: variables.$color-orange-hover;
+            color: variables.$color-text;
+            border: none;
+        }
+    }
+
+    .login-button, .sidebar__logout {
+        background-color: variables.$color-orange;
+        border: none;
+        color: variables.$color-text;
+
+        &:hover {
+            background-color: variables.$color-secondary;
+            color: variables.$color-text;
+            border: none;
         }
     }
 }

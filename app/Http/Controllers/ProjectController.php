@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Project;
 use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
@@ -12,7 +13,11 @@ class ProjectController extends Controller
      */
     public function index()
     {
-            $projects = Project::with('client')->get(); //Get the projects, and also load their related clients.
+            $projects = Project::with('client')
+                ->whereHas('client', function ($query) {
+                    $query->where('user_id', Auth::id());
+                })
+                ->get();
 
             return view('projects.index', [
                 'projects' => $projects
@@ -24,7 +29,11 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $clients = Client::orderBy('name')->get();
+        $clients = Client::where('user_id', Auth::id())
+            ->orderBy('name')
+            ->get();
+
+            /* Show me only the clients that belong to the person who is currently logged in. */
 
         return view('projects.create', [
             'clients' => $clients, //this is to populate the dropdown with clients when creating a new project, and it displays on Blade.
@@ -44,7 +53,18 @@ class ProjectController extends Controller
             'status' => 'required|in:planning,in_progress,completed,cancelled',
         ]);
 
-        Project::create($validated);
+        /* ownership check: */
+
+        $client = Client::where('id', $validated['client_id'])
+            ->where('user_id', Auth::id())
+            ->firstOrFail();
+
+        /* then it creates the project using that verified client */
+
+        $project = new Project($validated);
+        $project->client_id = $client->id;
+        $project->save();
+
         return redirect('/projects');
     }
 
@@ -53,6 +73,9 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
+        abort_unless($project->client->user_id === Auth::id(),
+        403);
+
         return view('projects.show', [
             'project' => $project,
         ]);
@@ -63,7 +86,13 @@ class ProjectController extends Controller
      */
     public function edit(Project $project)
     {
-        $clients = Client::orderBy('name')->get();
+        abort_unless($project->client->user_id === Auth::id(),
+        403);
+
+        $clients = Client::where('user_id', Auth::id())
+        ->orderBy('name')
+        ->get();
+
         return view('projects.edit', [
             'project' => $project, // the existing project we’re editing
             'clients' => $clients, //    the list for our client dropdown
@@ -75,6 +104,9 @@ class ProjectController extends Controller
      */
     public function update(Project $project)
     {
+        abort_unless($project->client->user_id === Auth::id(),
+        403);
+
         $validated = request()->validate([
             'name' => 'required',
             'client_id' => 'required|exists:clients,id',
@@ -82,7 +114,13 @@ class ProjectController extends Controller
             'budget' => 'nullable|numeric',
             'status' => 'required|in:planning,in_progress,completed,cancelled',
         ]);
+
+        $client = Client::where('id', $validated['client_id'])
+        ->where('user_id', Auth::id())
+        ->firstOrFail();
+
         $project->update($validated);
+
         return redirect('/projects');
     }
 
@@ -91,6 +129,9 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        abort_unless($project->client->user_id === Auth::id(),
+        403);
+        
         $project->delete();
         return redirect('/projects');
 

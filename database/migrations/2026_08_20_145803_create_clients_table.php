@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')
+                ->constrained('users') //constrained tells Laravel: clients.user_id refers to users.id.
+                ->onDelete('cascade');
             $table->string('name');
             $table->string('email')->nullable();
             $table->string('company')->nullable();

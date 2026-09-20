@@ -4,14 +4,8 @@
 
 @section('content')
 
-    <header>
-        <div>
-            <a href="/" class="button">Home</a>
-        </div>
-    </header>
-
     <header class="page-header">
-        <div>
+        <div class="clients-header">
             <h1>Clients</h1>
             <p>Manage your clients and their projects.</p>
         </div>
