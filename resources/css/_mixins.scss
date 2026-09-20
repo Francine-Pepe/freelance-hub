@@ -1,0 +1,67 @@
+@use "variables" as variables;
+
+/* Flex utilities */
+
+@mixin flex-between(
+    $align: center,
+    $gap: variables.$spacing-lg
+) {
+    display: flex;
+    align-items: $align;
+    justify-content: space-between;
+    gap: $gap;
+}
+
+/* Form controls */
+
+@mixin form-control {
+    width: 100%;
+    padding: variables.$spacing-md;
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$radius-sm;
+    background: variables.$color-bg;
+    color: variables.$color-text;
+    font: inherit;
+    outline: none;
+
+    transition: border-color 180ms ease;
+
+    &:focus {
+        border-color: variables.$color-orange;
+    }
+}
+
+/* Underlined links */
+
+@mixin underline-link(
+    $hover-color: variables.$color-orange
+) {
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+
+    &:hover {
+        color: $hover-color;
+    }
+}
+
+/* Form actions */
+
+@mixin form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: variables.$spacing-md;
+    margin-top: variables.$spacing-md;
+}
+
+
+@mixin form-actions-mobile {
+    flex-direction: column-reverse;
+    align-items: stretch;
+
+    a,
+    button {
+        width: 100%;
+        text-align: center;
+    }
+}

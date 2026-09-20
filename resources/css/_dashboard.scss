@@ -1,4 +1,6 @@
 @use "variables" as variables;
+@use "breakpoints";
+@use "mixins";
 
 .dashboard {
     width: 100%;
@@ -28,14 +30,17 @@
 }
 
 .dashboard__card {
-    padding: variables.$spacing-xl;
-    border: 1px solid variables.$color-secondary;
-    border-radius: variables.$radius-sm;
-    background: variables.$color-bg;
-    margin-bottom: variables.$spacing-lg;
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-sm;
+
+    padding: variables.$spacing-xl;
+    margin-bottom: variables.$spacing-lg;
+
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$radius-sm;
+
+    background: variables.$color-bg;
 }
 
 .dashboard__card-label {
@@ -67,13 +72,14 @@
 }
 
 .dashboard__status {
-    padding: variables.$spacing-lg;
-    border: 1px solid variables.$color-secondary;
-    border-radius: variables.$radius-sm;
-
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-sm;
+
+    padding: variables.$spacing-lg;
+
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$radius-sm;
 
     span {
         font-size: 0.85rem;
@@ -89,15 +95,15 @@
 .dashboard__projects {
     display: flex;
     flex-direction: column;
+
     border-top: 1px solid variables.$color-secondary;
 }
 
 .dashboard__project {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
+    @include mixins.flex-between();
+
     padding: variables.$spacing-lg 0;
+
     border-bottom: 1px solid variables.$color-secondary;
 
     h3 {
@@ -120,13 +126,13 @@
     color: variables.$color-secondary;
 }
 
-@media (max-width: 60rem) {
+@include breakpoints.down(lg) {
     .dashboard__status-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 40rem) {
+@include breakpoints.down(sm) {
     .dashboard {
         padding: variables.$spacing-lg;
     }

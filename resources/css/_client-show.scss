@@ -1,4 +1,6 @@
 @use "variables" as variables;
+@use "breakpoints";
+@use "mixins";
 
 .client-show {
     width: min(100%, 60rem);
@@ -6,10 +8,8 @@
 }
 
 .client-show__header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: variables.$spacing-xxl;
+    @include mixins.flex-between(flex-end, variables.$spacing-xxl);
+
     margin-bottom: variables.$spacing-xxl;
 
     h1 {
@@ -27,12 +27,16 @@
 
 .client-show__edit {
     padding: variables.$spacing-md variables.$spacing-lg;
+
     border: 1px solid variables.$color-orange;
     border-radius: variables.$radius-sm;
+
     background: variables.$color-orange;
     color: variables.$color-bg;
+
     font-size: 0.9rem;
     font-weight: 600;
+
     transition:
         background 180ms ease,
         border-color 180ms ease;
@@ -46,18 +50,21 @@
 .client-show__details {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+
     gap: variables.$spacing-lg;
     margin-bottom: variables.$spacing-xxl;
 }
 
 .client-show__detail {
     padding: variables.$spacing-lg;
+
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
 
     span {
         display: block;
         margin-bottom: variables.$spacing-sm;
+
         font-size: 0.8rem;
         color: variables.$color-secondary;
     }
@@ -84,10 +91,8 @@
 }
 
 .client-show__project {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
+    @include mixins.flex-between();
+
     padding: variables.$spacing-lg 0;
     border-top: 1px solid variables.$color-secondary;
 
@@ -103,9 +108,7 @@
             font-size: 1rem;
             font-weight: 600;
 
-            &:hover {
-                color: variables.$color-orange;
-            }
+            @include mixins.underline-link;
         }
     }
 
@@ -123,8 +126,10 @@
 
 .client-show__empty {
     padding: variables.$spacing-lg 0;
+
     border-top: 1px solid variables.$color-secondary;
     border-bottom: 1px solid variables.$color-secondary;
+
     color: variables.$color-secondary;
 }
 
@@ -132,15 +137,11 @@
     display: inline-block;
     margin-top: variables.$spacing-xxl;
     font-size: 0.9rem;
-    text-decoration: underline;
-    text-underline-offset: 0.2em;
 
-    &:hover {
-        color: variables.$color-orange;
-    }
+    @include mixins.underline-link;
 }
 
-@media (max-width: 40rem) {
+@include breakpoints.down(sm) {
     .client-show {
         width: 100%;
         padding: variables.$spacing-lg;

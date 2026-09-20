@@ -1,4 +1,7 @@
 @use "variables" as variables;
+@use "mixins";
+
+/* Stats */
 
 .stats-grid {
     display: grid;
@@ -9,34 +12,38 @@
 
 .stat-card {
     padding: variables.$spacing-lg;
+
     background: variables.$color-surface;
+
     border: 1px solid variables.$color-border;
     border-radius: variables.$radius-md;
 
     &__label {
         display: block;
         margin-bottom: variables.$spacing-sm;
+
         color: variables.$color-muted;
         font-size: 0.9rem;
     }
 
     &__value {
         display: block;
+
         font-size: 2rem;
         font-weight: 600;
         line-height: 1;
     }
 }
 
+/* Project list */
+
 .project-list {
     display: grid;
 }
 
 .project-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
+    @include mixins.flex-between();
+
     padding: variables.$spacing-md 0;
     border-bottom: 1px solid variables.$color-border;
 
@@ -83,11 +90,12 @@
     }
 }
 
+/* Page header */
+
 .page-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
+    @include mixins.flex-between(flex-end);
+
+    padding: variables.$spacing-xl;
     margin-bottom: variables.$spacing-xl;
 
     h1 {
@@ -95,10 +103,12 @@
     }
 
     p {
-        margin: 0;
-        color: variables.$color-muted;
+        margin: variables.$spacing-sm 0 0;
+        color: variables.$color-secondary;
     }
 }
+
+/* Buttons */
 
 button,
 .delete-button,
@@ -106,11 +116,15 @@ button,
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     padding: variables.$spacing-sm variables.$spacing-md;
+
     border-radius: variables.$radius-sm;
+
     color: variables.$color-bg;
     font-size: 0.9rem;
     font-weight: 500;
+
     transition: background 0.2s ease;
 }
 
@@ -131,47 +145,69 @@ button,
     }
 }
 
+/* Generic item list */
+
 .item-list {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: variables.$spacing-sm;
+    padding-left: variables.$spacing-xl;
 }
 
+/* Generic item card */
+
 .item-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: variables.$spacing-lg;
-    padding: variables.$spacing-lg;
+    @include mixins.flex-between(center, variables.$spacing-xl);
+
+    padding: variables.$spacing-xl variables.$spacing-lg;
+
     background: variables.$color-surface;
+
     border: 1px solid variables.$color-border;
+    border-bottom: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-md;
 
     &__main {
         min-width: 0;
 
         h2 {
-            margin: 0 0 variables.$spacing-xs;
-            font-size: 1.1rem;
+            margin: 0 0 variables.$spacing-sm;
+
+            font-size: 1.25rem;
+            font-weight: 600;
+
+            a {
+                color: variables.$color-text;
+
+                &:hover {
+                    color: variables.$color-orange;
+                }
+            }
         }
 
         p {
-            margin: 2px 0;
-            color: variables.$color-muted;
+            margin: variables.$spacing-xs 0 0;
+
+            color: variables.$color-secondary;
             font-size: 0.9rem;
         }
     }
 
     &__actions {
+        display: flex;
+        align-items: center;
+        gap: variables.$spacing-md;
         flex-shrink: 0;
 
         a {
-            color: variables.$color-muted;
-            font-size: 0.9rem;
+            color: variables.$color-text;
+            font-size: 0.85rem;
 
-            &:hover {
-                color: variables.$color-text;
-                text-decoration: underline;
-            }
+            @include mixins.underline-link;
+        }
+
+        form {
+            margin: 0;
         }
     }
 
@@ -181,29 +217,36 @@ button,
     }
 }
 
-.empty-state {
-    padding: variables.$spacing-xxl;
-    text-align: center;
-    background: variables.$color-surface;
-    border: 1px dashed variables.$color-border;
-    border-radius: variables.$radius-md;
+/* Item metadata */
 
-    p {
-        margin: 0 0 variables.$spacing-md;
-        color: variables.$color-muted;
+.item-card__meta {
+    display: flex;
+    align-items: center;
+    gap: variables.$spacing-lg;
+    white-space: nowrap;
+
+    > span:first-child {
+        font-size: 0.85rem;
+        color: variables.$color-secondary;
     }
 }
 
+/* Status badge */
+
 .status-badge {
-    display: inline-flex;
-    align-items: center;
+    display: inline-block;
+
     padding: variables.$spacing-xs variables.$spacing-sm;
-    border-radius: 999px;
-    border: 1px solid variables.$color-border;
+
+    border: 1px solid variables.$color-secondary;
+    border-radius: variables.$radius-sm;
+
     background: variables.$color-bg;
     color: variables.$color-muted;
-    font-size: 0.8rem;
+
+    font-size: 0.75rem;
     font-weight: 500;
+    text-transform: capitalize;
     white-space: nowrap;
 
     &--planning {
@@ -211,7 +254,7 @@ button,
     }
 
     &--in_progress {
-        color: #416b9a;
+        color: variables.$color-info;
     }
 
     &--completed {
@@ -220,5 +263,23 @@ button,
 
     &--cancelled {
         color: variables.$color-danger;
+    }
+}
+
+/* Empty state */
+
+.empty-state {
+    padding: variables.$spacing-xxl;
+
+    text-align: center;
+
+    background: variables.$color-surface;
+
+    border: 1px dashed variables.$color-border;
+    border-radius: variables.$radius-md;
+
+    p {
+        margin: 0 0 variables.$spacing-md;
+        color: variables.$color-muted;
     }
 }
