@@ -4,6 +4,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ReminderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -39,6 +40,12 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('/profile', [ProfileController::class, 'destroy'])
         ->name('profile.destroy');
+
+    Route::post('/reminders', [ReminderController::class, 'store'])
+        ->name('reminders.store');
+
+    Route::delete('/reminders/{reminder}', [ReminderController::class, 'destroy'])
+        ->name('reminders.destroy');
 });
 
 require __DIR__.'/auth.php';

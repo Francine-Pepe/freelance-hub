@@ -12,6 +12,12 @@
     gap: $gap;
 }
 
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 /* Form controls */
 
 @mixin form-control {

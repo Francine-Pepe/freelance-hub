@@ -2,9 +2,13 @@
 @use "breakpoints";
 @use "mixins";
 
+.dashboard-page-container {
+    display: flex;
+    padding: variables.$spacing-xl variables.$spacing-xxl;
+}
+
 .dashboard {
     width: 100%;
-    padding: variables.$spacing-xl variables.$spacing-xxl;
 }
 
 .dashboard__header {

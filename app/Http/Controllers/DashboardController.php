@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use App\Models\Project;
+use App\Models\Reminder;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -56,11 +57,16 @@ class DashboardController extends Controller
 
             /* This is a chain of Eloquent methods. */
 
+        $reminders = Reminder::where('user_id', Auth::id())
+            ->latest()
+            ->get();
+
         return view('dashboard', [
             'clientCount' => $clientCount,
             'projectCount' => $projectCount,
             'recentProjects' => $recentProjects,
             'statusCounts' => $statusCounts,
+            'reminders' => $reminders,
             /* 'planningCount' => $planningCount,
             'inProgressCount' => $inProgressCount,
             'completedCount' => $completedCount,
