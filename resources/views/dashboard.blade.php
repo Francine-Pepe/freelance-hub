@@ -4,6 +4,12 @@
 
 @section('content')
 
+    <h1 style="background: red; color: white; padding: 30px; font-size: 40px;">
+
+        CORKBOARD TEST
+
+    </h1>
+
     <section class="dashboard-page-container">
 
         <section class="dashboard">
