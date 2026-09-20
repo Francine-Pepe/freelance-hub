@@ -94,9 +94,9 @@
             </section>
         </section>
 
-        <section class="little-reminders">
+{{--         <section class="little-reminders">
             <x-corkboard :reminders="$reminders" />
-        </section>
+        </section> --}}
 
     </section>
 
