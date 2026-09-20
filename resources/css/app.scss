@@ -12,6 +12,7 @@
 @use "client-show";
 @use "project-form";
 @use "project-show";
+@use "guest-pages";
 
 * {
     box-sizing: border-box;
@@ -60,7 +61,7 @@ a {
     border-bottom: 1px solid variables.$color-secondary;
 }
 
-.sidebar__logo, .dashboard__header h1, .page-header .clients-header h1, .client-form__header h1, .client-show__header h1, .project-form__header h1, .page-header__projects h1 {
+.sidebar__logo, .dashboard__header h1, .page-header .clients-header h1, .client-form__header h1, .client-show__header h1, .project-form__header h1, .page-header__projects h1, .intro-page__content  {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
