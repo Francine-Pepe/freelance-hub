@@ -95,6 +95,7 @@
         </section>
 
        <section class="little-reminders">
+            <h2>TEST — Corkboard area</h2>
             <x-corkboard :reminders="$reminders" />
         </section>
 
