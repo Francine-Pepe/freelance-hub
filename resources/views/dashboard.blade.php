@@ -44,23 +44,23 @@
                 <h2>Project Statuses</h2>
 
                 <div class="dashboard__status-grid">
-                    <div class="dashboard__status">
-                        <span>Planning</span>
+                    <div class="dashboard__project-status dashboard__project-status--planning">
+                        <span>Planning:</span>
                         <strong>{{ $statusCounts['planning'] }}</strong>
                     </div>
 
-                    <div class="dashboard__status">
-                        <span>In Progress</span>
+                    <div class="dashboard__project-status dashboard__project-status--in_progress">
+                        <span>In Progress:</span>
                         <strong>{{ $statusCounts['in_progress'] }}</strong>
                     </div>
 
-                    <div class="dashboard__status">
-                        <span>Completed</span>
+                    <div class="dashboard__project-status dashboard__project-status--completed">
+                        <span>Completed:</span>
                         <strong>{{ $statusCounts['completed'] }}</strong>
                     </div>
 
-                    <div class="dashboard__status">
-                        <span>Canceled</span>
+                    <div class="dashboard__project-status dashboard__project-status--cancelled">
+                        <span>Canceled:</span>
                         <strong>{{ $statusCounts['cancelled'] }}</strong>
                     </div>
                 </div>
@@ -79,15 +79,20 @@
                                     <h3>{{ $project->name }}</h3>
 
                                     @if ($project->client)
-                                        <span>{{ $project->client->name }}</span>
+                                        <span class="dashboard-client-name">
+                                            <h4>
+                                                Client:
+                                            </h4>
+                                            {{ $project->client->name }}
+                                        </span>
                                     @endif
                                 </div>
 
-                                <span class="dashboard__project-status">{{ str_replace('_', ' ', ucfirst($project->status->value)) }}
+                                <span class="dashboard__project-status dashboard__project-status--{{ $project->status->value }}">
+                                    {{ str_replace('_', ' ', ucfirst($project->status->value)) }}
                                 </span>
                             </div>
                         @endforeach
-
                     </div>
                 @endif
             </section>
