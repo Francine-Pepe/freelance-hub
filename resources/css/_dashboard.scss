@@ -1,14 +1,22 @@
 @use "variables" as variables;
 @use "breakpoints";
-@use "mixins";
+@use "mixins" as mixins;
 
 .dashboard-page-container {
     display: flex;
-    padding: variables.$spacing-xl variables.$spacing-xxl;
+    flex-wrap: wrap;
+    gap: variables.$spacing-xl;
+    width: 100%;
+    min-width: 0;
+    padding: variables.$spacing-xl;
+    margin: 0 auto 2rem auto;
 }
 
-.dashboard {
-    width: 100%;
+.dashboard,
+.little-reminders {
+    flex: 1 1 22rem;
+    min-width: 0;
+    padding: 0 variables.$spacing-md;
 }
 
 .dashboard__header {
@@ -29,7 +37,8 @@
 
 .dashboard__stats {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 5rem), 1fr));
+
     gap: variables.$spacing-lg;
 }
 
@@ -71,7 +80,7 @@
 
 .dashboard__status-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 7rem), 1fr));
     gap: variables.$spacing-md;
 }
 
@@ -79,9 +88,7 @@
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-sm;
-
     padding: variables.$spacing-lg;
-
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
 
@@ -105,9 +112,7 @@
 
 .dashboard__project {
     @include mixins.flex-between();
-
     padding: variables.$spacing-lg 0;
-
     border-bottom: 1px solid variables.$color-secondary;
 
     h3 {
@@ -116,41 +121,77 @@
         font-weight: 600;
     }
 
-    span {
+    // Client name
+    > div > span {
         font-size: 0.85rem;
         color: variables.$color-secondary;
     }
 }
 
 .dashboard__project-status {
+    padding: variables.$spacing-sm;
+    border-radius: variables.$radius-sm;
+    font-size: 0.8rem;
+    font-weight: 600;
     text-transform: capitalize;
+    text-align: center;
+
+    &--planning {
+        color: #163a5f;
+        background-color: #e8f0f8;
+    }
+
+    &--in_progress {
+        color: #6b3fa0;
+        background-color: #f0e8f8;
+    }
+
+    &--completed {
+        color: #2f7d4a;
+        background-color: #e8f5ec;
+    }
+
+    &--cancelled {
+        color: #b83a3a;
+        background-color: #fae8e8;
+    }
 }
 
 .dashboard__empty {
     color: variables.$color-secondary;
 }
 
-@include breakpoints.down(lg) {
-    .dashboard__status-grid {
-        grid-template-columns: repeat(2, 1fr);
+.dashboard-client-name {
+    @include mixins.flex-center;
+    gap: variables.$spacing-md;
+
+    h4 {
+        color: variables.$color-text;
     }
+
 }
 
 @include breakpoints.down(sm) {
     .dashboard {
         padding: variables.$spacing-lg;
     }
+}
+
+@include breakpoints.down(xxs) {
+    .dashboard-page-container {
+        padding: 0;
+    }
 
     .dashboard__stats {
         grid-template-columns: 1fr;
     }
 
-    .dashboard__status-grid {
-        grid-template-columns: 1fr;
-    }
+}
 
+@include breakpoints.down(xxxs) {
     .dashboard__project {
         align-items: flex-start;
         flex-direction: column;
+        gap: variables.$spacing-sm;
     }
 }

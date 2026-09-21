@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "variables" as variables;
 @use "mixins" as mixins;
+@use "breakpoints";
 
 /* Corkboard variables */
 
@@ -13,7 +14,7 @@ $cork-shadow: variables.$color-primary-hover;
     display: flex;
     flex-direction: column;
     gap: variables.$spacing-lg;
-    margin: 9rem 2rem 2rem 2rem;
+    margin-top: 9rem;
 }
 
 /* Corkboard */
@@ -21,11 +22,11 @@ $cork-shadow: variables.$color-primary-hover;
 .corkboard {
     display: flex;
     flex-direction: column;
-    flex: 1;
     position: relative;
     width: 100%;
+    min-width: 0;
     min-height: 18rem;
-    padding: variables.$spacing-xl;
+    padding: variables.$spacing-lg;
     border-radius: variables.$radius-lg;
     background-color: $cork-base;
     background-image:
@@ -84,11 +85,13 @@ $cork-shadow: variables.$color-primary-hover;
 /* Notes container */
 
 .corkboard__notes {
-    @include mixins.flex-center;
-    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
     flex-wrap: wrap;
     gap: variables.$spacing-lg;
-
+    width: 100%;
+    min-width: 0;
 }
 
 /* Post-it */
@@ -255,7 +258,6 @@ $cork-shadow: variables.$color-primary-hover;
         background: variables.$color-orange;
         color: variables.$color-text;
         font: inherit;
-        font-weight: 600;
         cursor: pointer;
         transition:
             background 180ms ease,
@@ -306,5 +308,11 @@ $cork-shadow: variables.$color-primary-hover;
         button {
             width: 100%;
         }
+    }
+}
+
+@media (max-width: 1028px) {
+    .corkboard-component {
+        margin-top: variables.$spacing-lg;
     }
 }

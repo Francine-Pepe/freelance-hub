@@ -1,13 +1,13 @@
 @use "variables" as variables;
+@use "breakpoints";
 
 /* Container */
 
 .container {
     width: 100%;
-    max-width: 75rem;
+    /* max-width: 75rem; */
     margin-inline: auto;
     padding: variables.$spacing-xl variables.$spacing-page;
-    overflow-x: hidden;
 }
 
 /* App layout */
@@ -19,13 +19,20 @@
 
 .main-content {
     display: flex;
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+    margin: 0;
+    overflow: hidden;
 }
 
 /* Sidebar */
 
 .sidebar {
-    width: 20vw;
+    /* width: 20vw; */
     min-height: 100vh;
+    flex-shrink: 0;
+
     padding: variables.$spacing-xl variables.$spacing-lg;
 
     background: variables.$color-text;
@@ -35,13 +42,18 @@
     flex-direction: column;
 }
 
+/* Sidebar logo */
+
 .sidebar__logo {
     border-bottom: 1px solid variables.$color-secondary;
 }
 
+/* Sidebar navigation */
+
 .sidebar__nav {
     display: flex;
     flex-direction: column;
+
     gap: variables.$spacing-sm;
     margin-top: variables.$spacing-xxl;
 
@@ -50,8 +62,8 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-        gap: variables.$spacing-lg;
 
+        gap: variables.$spacing-lg;
         padding: variables.$spacing-md;
 
         font-size: 0.95rem;
@@ -87,15 +99,17 @@
 
 .icon {
     width: variables.$spacing-lg;
+    flex-shrink: 0;
 }
 
 /* Main content */
 
 .main {
     flex: 1;
-    min-height: 100%;
     min-width: 0;
-    margin: 0 auto;
+    max-width: 100%;
+    min-height: 100%;
+    overflow-wrap: break-word;
 }
 
 /* Shared heading/layout styling */
@@ -116,4 +130,41 @@
 
     margin-left: calc(-1 * variables.$spacing-lg);
     margin-right: calc(-1 * variables.$spacing-lg);
+}
+
+/* responsiveness */
+
+@include breakpoints.down(tablet) {
+
+    .app {
+        min-height: unset;
+    }
+
+    .main-content {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        min-height: fit-content;
+        width: 100%;
+    }
+
+    .sidebar__nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        margin-top: 2rem;
+
+        a, .sidebar__logout {
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+    }
+
+    .main {
+        width: 100%;
+    }
 }

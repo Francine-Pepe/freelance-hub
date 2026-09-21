@@ -34,10 +34,12 @@
 #add-button {
     background: variables.$color-orange;
     border-color: variables.$color-orange;
+    color: variables.$color-text;
 
     &:hover {
         background: variables.$color-text;
         border-color: variables.$color-text;
+        color: variables.$color-bg;
     }
 }
 
