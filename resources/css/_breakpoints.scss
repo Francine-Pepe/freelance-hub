@@ -1,15 +1,25 @@
 @use "sass:map";
 
-$breakpoints: (
-    xxs: 30rem,
-    xs: 31.25rem,
-    sm: 40rem,
-    md: 50rem,
-    lg: 60rem,
-    xl: 80rem,
-    xxl: 96rem
-);
+/* Breakpoints */
 
+$breakpoints: (
+    // Existing
+    xxxs: 23.75rem, // 380px
+    xxs: 30rem, // 480px
+    xs: 31.25rem, // 500px
+    sm: 40rem, // 640px
+    md: 50rem, // 800px
+    lg: 60rem, // 960px
+    xl: 80rem, // 1280px
+    xxl: 96rem,
+
+    // 1536px
+    // Additional
+    tablet: 48rem, // 768px
+    desktop: 75rem, // 1200px
+    wide: 87.5rem, // 1400px
+    ultra: 120rem // 1920px
+);
 
 /* Breakpoint helpers */
 
@@ -22,7 +32,6 @@ $breakpoints: (
         @error "Unknown breakpoint: #{$breakpoint}";
     }
 }
-
 
 @mixin down($breakpoint) {
     @if map.has-key($breakpoints, $breakpoint) {
