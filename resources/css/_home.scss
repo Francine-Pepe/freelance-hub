@@ -46,12 +46,11 @@
 
     &__title {
         width: fit-content;
-
+        padding-top: 8px;
         font-size: variables.$font-size-lg;
         font-weight: 600;
         letter-spacing: -0.02em;
         line-height: unset;
-
         border-bottom: 1px solid variables.$color-text;
     }
 
@@ -59,4 +58,5 @@
         width: 50%;
         font-size: variables.$font-size-xl;
     }
+
 }

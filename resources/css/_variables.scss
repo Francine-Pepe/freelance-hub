@@ -34,8 +34,10 @@ $color-muted: #526070;
 $muted-brown: #8A6A4A;
 
 $color-primary: #002a54;
+$color-primary-muted: #486684;
 $color-primary-hover: #001d3a;
 $color-secondary: #7cbdd1;
+$color-secondary-muted: #b1c8cf;
 
 $color-accent: #8aa8ff;
 $color-accent-soft: #e9eeff;
@@ -68,6 +70,7 @@ $spacing-sm: 0.5rem;
 $spacing-md: 1rem;
 $spacing-lg: 1.5rem;
 $spacing-xl: 2.5rem;
+$spacing-xl2: 3rem;
 $spacing-xxl: 4rem;
 
 $spacing-page: clamp(1rem, 2vw, 3rem);

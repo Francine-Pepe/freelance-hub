@@ -43,21 +43,43 @@
     }
 }
 
+/* generic button style */
+
+.delete-button, .edit-button, .view-client-button {
+    border: none;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+    color: variables.$color-bg;
+}
+
 /* Delete button */
 
 .delete-button {
-    border: none;
-    padding: 0;
+    background: variables.$color-danger;
 
-    background: none;
-    color: variables.$color-text;
+    /* @include mixins.underline-link; */
+}
 
-    font: inherit;
-    font-size: 0.85rem;
+/* edit button */
 
-    cursor: pointer;
+.edit-button {
+    background-color: variables.$color-primary;
 
-    @include mixins.underline-link;
+    &:hover {
+        background-color: variables.$color-primary-hover;
+    }
+}
+
+/* view client */
+
+.view-client-button {
+    background-color: variables.$color-success;
+
+    &:hover {
+        background-color: variables.$color-success-hover;
+    }
 }
 
 /* Responsive */
