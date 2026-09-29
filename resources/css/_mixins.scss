@@ -18,6 +18,24 @@
     align-items: center;
 }
 
+@mixin flex-space-around {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+@mixin flex-start-center {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+@mixin flex-start {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
 /* Form controls */
 
 @mixin form-control {
@@ -42,12 +60,8 @@
 @mixin underline-link(
     $hover-color: variables.$color-orange
 ) {
-    text-decoration: underline;
+    text-decoration: none;
     text-underline-offset: 0.2em;
-
-    &:hover {
-        color: $hover-color;
-    }
 }
 
 /* Form actions */

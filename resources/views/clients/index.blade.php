@@ -4,55 +4,60 @@
 
 @section('content')
 
-    <header class="page-header">
-        <div class="clients-header">
-            <h1>Clients</h1>
-            <p>Manage your clients and their projects.</p>
-        </div>
+    <main class="main-content-with-bg">
 
-        <a href="/clients/create" class="button" id="add-button">Add Client</a>
-    </header>
+        <header class="page-header">
+            <div class="clients-header">
+                <h1>Clients</h1>
+                <p>Manage your clients and their projects.</p>
+            </div>
 
-    <section class="item-list">
+            <a href="/clients/create" class="button" id="add-button">Add Client</a>
+        </header>
 
-        @foreach ($clients as $client)
-            <article class="item-card">
+            <section class="item-list">
 
-                <div class="item-card__main">
-                    <h2>
-                        <a href="/clients/{{ $client->id }}" >
-                            {{ $client->name }}
-                        </a>
-                    </h2>
+                @foreach ($clients as $client)
+                    <article class="item-card">
+                        <div class="item-card__main">
+                            <h2>
+                                <x-css-profile class="icon" />
+                                <a href="/clients/{{ $client->id }}" >
+                                    {{ $client->name }}
+                                </a>
+                            </h2>
 
-                    @if ($client->company)
-                        <p>{{ $client->company }}</p>
-                    @endif
+                            @if ($client->company)
+                                <p>{{ $client->company }}</p>
+                            @endif
 
-                    @if ($client->email)
-                        <p>{{ $client->email }}</p>
-                    @endif
+                            @if ($client->email)
+                                <p>{{ $client->email }}</p>
+                            @endif
 
-                    @if ($client->phone)
-                        <p>{{ $client->phone }}</p>
-                    @endif
+                            @if ($client->phone)
+                                <p>{{ $client->phone }}</p>
+                            @endif
 
-                </div>
+                        </div>
 
-                <div class="item-card__actions">
-                    <a href="/clients/{{ $client->id }}/edit">Edit</a>
-                    <a href="/clients/{{ $client->id }}">View Client</a>
+                        <div class="item-card__actions">
+                            <a href="/clients/{{ $client->id }}/edit" class="edit-button">Edit</a>
+                            <a href="/clients/{{ $client->id }}" class="view-client-button">View Client</a>
 
-                    <form method="POST" action="/clients/{{ $client->id }}">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="delete-button">Delete</button>
-                </form>
-                </div>
-            </article>
-        @endforeach
-
-    </section>
+                            <form method="POST" action="/clients/{{ $client->id }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        </div>
+                    </article>
+                @endforeach
+            </section>
+            {{-- <section class="main-content-with-bg__bg-image">
+                <x-background-image image="images/client-bg.jpg" />
+            </section> --}}
+    </main>
 @endsection
 
 

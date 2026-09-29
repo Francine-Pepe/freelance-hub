@@ -91,8 +91,7 @@
 }
 
 .client-show__project {
-    @include mixins.flex-between();
-
+    @include mixins.flex-start;
     padding: variables.$spacing-lg 0;
     border-top: 1px solid variables.$color-secondary;
 
@@ -115,7 +114,6 @@
     p {
         margin: variables.$spacing-xs 0 0;
         font-size: 0.85rem;
-        color: variables.$color-secondary;
     }
 }
 
@@ -134,7 +132,8 @@
 }
 
 .client-show__back {
-    display: inline-block;
+    @include mixins.flex-start-center;
+    gap: variables.$spacing-md;
     margin-top: variables.$spacing-xxl;
     font-size: 0.9rem;
 

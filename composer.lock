@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ebfb6656f0c1891750e6127896a3ae4",
+    "content-hash": "8050adb90e0fa5be6a45c0b34ce02998",
     "packages": [
         {
             "name": "blade-ui-kit/blade-icons",
@@ -1349,6 +1349,67 @@
                 }
             ],
             "time": "2026-07-20T13:40:43+00:00"
+        },
+        {
+            "name": "khatabwedaa/blade-css-icons",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/khatabwedaa/blade-css-icons.git",
+                "reference": "511d91f84576bd2619645cf0c5be89ce83c77015"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/khatabwedaa/blade-css-icons/zipball/511d91f84576bd2619645cf0c5be89ce83c77015",
+                "reference": "511d91f84576bd2619645cf0c5be89ce83c77015",
+                "shasum": ""
+            },
+            "require": {
+                "blade-ui-kit/blade-icons": "^1.6",
+                "illuminate/support": "^9.0|^10.0|^11.0|^12.0|^13.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.0|^8.0|^9.0|^10.0|^11.0",
+                "phpunit/phpunit": "^9.0|^10.5|^11.0|^12.5.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Khatabwedaa\\BladeCssIcons\\BladeCssIconsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Khatabwedaa\\BladeCssIcons\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Khatab Wedaa",
+                    "email": "khatabwedaa@gmail.com",
+                    "homepage": "https://twitter.com/khatabwedaa",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A package to easily make use of Css.gg in your Laravel Blade views.",
+            "homepage": "https://github.com/khatabwedaa/blade-css-icons",
+            "keywords": [
+                "Css.gg",
+                "blade",
+                "laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/khatabwedaa/blade-css-icons/issues",
+                "source": "https://github.com/khatabwedaa/blade-css-icons/tree/1.6.0"
+            },
+            "time": "2026-04-16T09:27:17+00:00"
         },
         {
             "name": "laravel/framework",

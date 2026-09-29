@@ -32,9 +32,7 @@
     /* width: 20vw; */
     min-height: 100vh;
     flex-shrink: 0;
-
-    padding: variables.$spacing-xl variables.$spacing-lg;
-
+    padding: variables.$spacing-xl2 variables.$spacing-lg;
     background: variables.$color-text;
     color: variables.$color-bg;
 
@@ -125,9 +123,7 @@
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-
     padding: 0 0 variables.$spacing-lg variables.$spacing-lg;
-
     margin-left: calc(-1 * variables.$spacing-lg);
     margin-right: calc(-1 * variables.$spacing-lg);
 }
@@ -152,19 +148,36 @@
     .sidebar__nav {
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-start;
         width: 100%;
         margin-top: 2rem;
 
         a, .sidebar__logout {
             flex-wrap: wrap;
-            gap: 0.5rem;
+            gap: 0.1rem;
             justify-content: center;
+            padding: 0.5rem 1rem;
         }
-
     }
 
     .main {
         width: 100%;
+    }
+}
+
+@include breakpoints.down(lg) {
+    .intro-page__content {
+        padding: unset;
+        margin: unset;
+    }
+
+    .intro-page {
+        padding: variables.$spacing-xl;
+    }
+}
+
+@include breakpoints.down(xxs-xxxs) {
+    .sidebar__nav {
+        flex-direction: column;
     }
 }

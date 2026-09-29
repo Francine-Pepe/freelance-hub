@@ -12,23 +12,19 @@
 
 .stat-card {
     padding: variables.$spacing-lg;
-
     background: variables.$color-surface;
-
     border: 1px solid variables.$color-border;
     border-radius: variables.$radius-md;
 
     &__label {
         display: block;
         margin-bottom: variables.$spacing-sm;
-
         color: variables.$color-muted;
         font-size: 0.9rem;
     }
 
     &__value {
         display: block;
-
         font-size: 2rem;
         font-weight: 600;
         line-height: 1;
@@ -43,7 +39,6 @@
 
 .project-card {
     @include mixins.flex-between();
-
     padding: variables.$spacing-md 0;
     border-bottom: 1px solid variables.$color-border;
 
@@ -94,9 +89,10 @@
 
 .page-header {
     @include mixins.flex-between(flex-end);
-
     padding: variables.$spacing-xl;
-    margin-bottom: variables.$spacing-xl;
+    margin: variables.$spacing-sm 0 variables.$spacing-xl 0;
+    position: relative;
+    z-index: 2;
 
     h1 {
         margin: 0 0 variables.$spacing-xs;
@@ -108,23 +104,50 @@
     }
 }
 
+/* clients and projects */
+
+.main-content-with-bg {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* min-width: 85vw; */
+    min-height: 100vh;
+    padding: 0 variables.$spacing-xl;
+    isolation: isolate;
+
+    &__bg-image {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+        z-index: -1;
+
+        img {
+            display: block;
+            width: inherit;
+            height: 100vh;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+}
+
 /* Buttons */
 
 button,
+.edit-button,
+.view-client-button,
 .delete-button,
 #add-button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
     padding: variables.$spacing-sm variables.$spacing-md;
-
     border-radius: variables.$radius-sm;
-
     color: variables.$color-bg;
     font-size: 0.9rem;
     font-weight: 500;
-
     transition: background 0.2s ease;
 }
 
@@ -150,31 +173,45 @@ button,
 .item-list {
     display: flex;
     flex-direction: column;
+    align-self: center;
     gap: variables.$spacing-sm;
-    padding-left: variables.$spacing-xl;
+    width: 100%
+}
+
+/* page-header and cards generic style */
+
+.item-card, .page-header {
+    background: rgba(255, 255, 255, 0.753);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5.1px);
+    -webkit-backdrop-filter: blur(5.1px);
+    border-radius: variables.$radius-md;
+    padding: variables.$spacing-xl;
+
 }
 
 /* Generic item card */
 
+.item-card .item-card__main h2, p, .item-card__meta span, .client-show__project .client-show__show-project h3 a, p {
+    @include mixins.flex-start-center;
+    gap: variables.$spacing-md;
+}
+
 .item-card {
-    @include mixins.flex-between(center, variables.$spacing-xl);
-
-    padding: variables.$spacing-xl variables.$spacing-lg;
-
-    background: variables.$color-surface;
-
-    border: 1px solid variables.$color-border;
-    border-bottom: 1px solid variables.$color-secondary;
-    border-radius: variables.$radius-md;
+    @include mixins.flex-between(flex-end, variables.$spacing-xl);
 
     &__main {
         min-width: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: variables.$spacing-sm;
 
         h2 {
-            margin: 0 0 variables.$spacing-sm;
-
+            margin: 0;
             font-size: 1.25rem;
             font-weight: 600;
+            gap: variables.$spacing-md;
 
             a {
                 color: variables.$color-text;
@@ -187,8 +224,7 @@ button,
 
         p {
             margin: variables.$spacing-xs 0 0;
-
-            color: variables.$color-secondary;
+            /* color: variables.$color-secondary; */
             font-size: 0.9rem;
         }
     }
@@ -200,9 +236,8 @@ button,
         flex-shrink: 0;
 
         a {
-            color: variables.$color-text;
+            color: variables.$color-bg;
             font-size: 0.85rem;
-
             @include mixins.underline-link;
         }
 
@@ -227,23 +262,18 @@ button,
 
     > span:first-child {
         font-size: 0.85rem;
-        color: variables.$color-secondary;
     }
 }
 
 /* Status badge */
 
-.status-badge {
+.status-badge, .client-show__status {
     display: inline-block;
-
     padding: variables.$spacing-xs variables.$spacing-sm;
-
     border: 1px solid variables.$color-secondary;
     border-radius: variables.$radius-sm;
-
     background: variables.$color-bg;
     color: variables.$color-muted;
-
     font-size: 0.75rem;
     font-weight: 500;
     text-transform: capitalize;
@@ -270,11 +300,8 @@ button,
 
 .empty-state {
     padding: variables.$spacing-xxl;
-
     text-align: center;
-
     background: variables.$color-surface;
-
     border: 1px dashed variables.$color-border;
     border-radius: variables.$radius-md;
 

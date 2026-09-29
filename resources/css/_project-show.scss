@@ -89,7 +89,8 @@
 }
 
 .project-show__back {
-    display: inline-block;
+    @include mixins.flex-start-center;
+    gap: variables.$spacing-md;
     margin-top: variables.$spacing-xxl;
     font-size: 0.9rem;
 

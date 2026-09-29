@@ -11,7 +11,7 @@
             <h1>{{ $client->name }}</h1>
 
             @if ($client->company)
-                <p>{{ $client->company }}</p>
+                <p>{{ $client->company->company }}</p>
             @endif
         </div>
 
@@ -47,18 +47,18 @@
         @forelse ($client->projects as $project)
 
             <article class="client-show__project">
-
-                <div>
+                <div class="client-show__show-project">
                     <h3>
                         <a href="/projects/{{ $project->id }}">
+                            <x-css-work-alt class="icon" />
                             {{ $project->name }}
                         </a>
                     </h3>
 
                     @if ($project->budget)
                         <p>
-                            Budget:
-                            €{{ number_format($project->budget, 2, ',', '.') }}
+                            <x-css-euro class="icon"  />
+                            {{ number_format($project->budget, 2, ',', '.') }}
                         </p>
                     @endif
                 </div>
@@ -80,7 +80,8 @@
     </section>
 
     <a href="/clients" class="client-show__back">
-        ← Back to clients
+        <x-css-arrow-left-o class="icon" />
+        Back to clients
     </a>
 
 </section>
