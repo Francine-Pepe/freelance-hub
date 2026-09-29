@@ -67,7 +67,8 @@
     </section>
 
     <a href="/projects" class="project-show__back">
-        ← Back to projects
+        <x-css-arrow-left-o class="icon" />
+        Back to projects
     </a>
 
 </section>

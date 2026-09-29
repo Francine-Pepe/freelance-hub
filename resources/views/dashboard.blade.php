@@ -76,13 +76,13 @@
                         @foreach ($recentProjects as $project)
                             <div class="dashboard__project">
                                 <div>
-                                    <h3>{{ $project->name }}</h3>
+                                    <h3>Project: {{ $project->name }}</h3>
 
                                     @if ($project->client)
                                         <span class="dashboard-client-name">
-                                            <h4>
+                                            <h3>
                                                 Client:
-                                            </h4>
+                                            </h3>
                                             {{ $project->client->name }}
                                         </span>
                                     @endif
