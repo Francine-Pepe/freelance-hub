@@ -11,14 +11,19 @@ class Client extends Model
 {
     protected $fillable = [
         'name',
-        'user_id'
+        'email',
+        'company',
+        'phone',
+        'user_id',
     ];
 
-    public function projects(): HasMany {
+    public function projects(): HasMany
+    {
         return $this->hasMany(Project::class);
     }
 
-    public function user(): BelongsTo {
+    public function user(): BelongsTo
+    {
         return $this->belongsTo(User::class);
     }
 }

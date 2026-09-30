@@ -69,13 +69,11 @@ class ClientController extends Controller
         return redirect('/clients');
     }
 
-    public function show(Client $client) {
-
+    public function show(Client $client){
         abort_unless($client->user_id === Auth::id(), 403);
         $client->load('projects');
-        return view('clients.show', [
-            'client' => $client,
-        ]);
+
+        return view('clients.show', compact('client'));
     }
 }
 
