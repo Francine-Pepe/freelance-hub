@@ -8,7 +8,7 @@
 }
 
 .client-show__header {
-    @include mixins.flex-between(flex-end, variables.$spacing-xxl);
+    @include mixins.flex-between(flex-start, variables.$spacing-xxl);
 
     margin-bottom: variables.$spacing-xxl;
 
