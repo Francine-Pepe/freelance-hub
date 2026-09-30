@@ -85,9 +85,9 @@
             @endforelse
 
         </section>
-        {{-- <section class="main-content-with-bg__bg-image">
-            <x-background-image image="images/project-bg.jpg" />
-        </section> --}}
+        <section class="main-content-with-bg__bg-image">
+            <x-background-image image="images/square-bg.jpg" />
+        </section> 
     </main>
 
 @endsection

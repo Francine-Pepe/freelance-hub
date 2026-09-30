@@ -126,6 +126,16 @@
         font-size: 0.85rem;
         color: variables.$color-secondary;
     }
+
+    &__client {
+        justify-content: flex-start;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.dashboard__project__client-details {
+    @include mixins.flex-center;
 }
 
 .dashboard__project-status {
@@ -165,7 +175,7 @@
     @include mixins.flex-center;
     gap: variables.$spacing-md;
 
-    h4 {
+    span, h3{
         color: variables.$color-text;
     }
 

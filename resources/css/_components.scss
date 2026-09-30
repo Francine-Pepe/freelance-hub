@@ -100,7 +100,7 @@
 
     p {
         margin: variables.$spacing-sm 0 0;
-        color: variables.$color-secondary;
+        color: variables.$color-text;
     }
 }
 
@@ -110,8 +110,8 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    /* min-width: 85vw; */
     min-height: 100vh;
+    width: 100%;
     padding: 0 variables.$spacing-xl;
     isolation: isolate;
 
@@ -119,19 +119,23 @@
         position: absolute;
         inset: 0;
         width: 100%;
-        height: 100vh;
+        height: 100%;
         margin: 0;
         z-index: -1;
 
         img {
+            position: fixed;
             display: block;
             width: inherit;
-            height: 100vh;
+            height: 100dvh;
             object-fit: cover;
             object-position: center;
+            opacity: 0.2;
+
         }
     }
 }
+
 
 /* Buttons */
 
@@ -226,6 +230,11 @@ button,
             margin: variables.$spacing-xs 0 0;
             /* color: variables.$color-secondary; */
             font-size: 0.9rem;
+        }
+
+        &__client-details {
+            display: flex;
+            gap: variables.$spacing-md;
         }
     }
 
