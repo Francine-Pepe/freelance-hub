@@ -28,15 +28,27 @@
                             </h2>
 
                             @if ($client->company)
+                            <div class="item-card__main__client-details">
+                                <x-mdi-home-silo-outline class="icon" />
                                 <p>{{ $client->company }}</p>
+                            </div>
+
                             @endif
 
                             @if ($client->email)
+                            <div class="item-card__main__client-details">
+                                <x-eva-email-outline class="icon" />
                                 <p>{{ $client->email }}</p>
+                            </div>
+
                             @endif
 
                             @if ($client->phone)
+                            <div class="item-card__main__client-details">
+                                <x-eva-phone-outline class="icon" />
                                 <p>{{ $client->phone }}</p>
+                            </div>
+
                             @endif
 
                         </div>
@@ -54,9 +66,9 @@
                     </article>
                 @endforeach
             </section>
-            {{-- <section class="main-content-with-bg__bg-image">
-                <x-background-image image="images/client-bg.jpg" />
-            </section> --}}
+            <section class="main-content-with-bg__bg-image">
+                <x-background-image image="images/square-bg.jpg" />
+            </section>
     </main>
 @endsection
 
