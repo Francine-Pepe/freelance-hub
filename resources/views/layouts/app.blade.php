@@ -26,6 +26,11 @@
                         Projects
                     </a>
 
+                    <a href="/how-it-works">
+                        <x-simpleline-info class="icon" />
+                        How It Works
+                    </a>
+
                     @auth
                         <a href="{{ route('dashboard') }}">
                             <x-radix-dashboard class="icon" />
