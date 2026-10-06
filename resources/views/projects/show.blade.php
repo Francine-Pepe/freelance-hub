@@ -6,11 +6,15 @@
 
     <header class="project-show__header">
         <div>
-            <h1>{{ $project->name }}</h1>
+            <div class="project-show__header__title">
+                <x-css-work-alt class="icon" />
+                <h1>{{ $project->name }}</h1>
+            </div>
+
 
             @if ($project->client)
                 <p>
-                    Client:
+                    <x-css-profile class="icon" />
                     <a href="/clients/{{ $project->client->id }}">
                         {{ $project->client->name }}
                     </a>

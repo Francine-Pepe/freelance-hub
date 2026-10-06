@@ -65,9 +65,7 @@
             @forelse ($client->projects as $project)
 
                 <article class="client-show__project">
-
                     <div class="client-show__show-project">
-
                         <h3>
                             <a href="/projects/{{ $project->id }}">
                                 <x-css-work-alt class="icon" />

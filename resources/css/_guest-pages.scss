@@ -122,8 +122,7 @@
 
 @include breakpoints.down(md) {
     .intro-page {
-        padding-top: variables.$spacing-xl;
-        padding-bottom: variables.$spacing-xl;
+        padding: variables.$spacing-xl 0;
 
         &__features {
             grid-template-columns: 1fr;

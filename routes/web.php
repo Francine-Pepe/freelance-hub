@@ -19,6 +19,10 @@ Route::get('/clients', [ClientController::class, 'index'])
 Route::get('/projects', [ProjectController::class, 'index'])
     ->name('projects.index');
 
+Route::get('/how-it-works', function () {
+    return view('how-it-works');
+})->name('how-it-works');
+
 
 // Protected pages
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -46,6 +50,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::delete('/reminders/{reminder}', [ReminderController::class, 'destroy'])
         ->name('reminders.destroy');
+
 });
 
 require __DIR__.'/auth.php';
