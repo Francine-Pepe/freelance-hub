@@ -107,12 +107,12 @@
 /* clients and projects */
 
 .main-content-with-bg {
-    position: relative; 
+    position: relative;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     width: 100%;
-    padding: 0 variables.$spacing-xl;
+    padding: variables.$spacing-xl;
     isolation: isolate;
 
     &__bg-image {
