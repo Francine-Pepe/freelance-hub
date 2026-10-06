@@ -1,0 +1,377 @@
+@use "variables" as variables;
+@use "breakpoints";
+
+.how-it-works {
+    min-height: calc(100vh - 4rem);
+    padding: variables.$spacing-xxl;
+
+    /* Intro */
+
+    &__intro {
+        display: flex;
+        align-items: center;
+        padding: variables.$spacing-xl variables.$spacing-xxl;
+    }
+
+    &__content {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+
+    &__eyebrow {
+        display: inline-block;
+        margin-bottom: variables.$spacing-md;
+
+        font-size: variables.$font-size-xs;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        text-transform: uppercase;
+
+        color: variables.$color-primary;
+    }
+
+    &__intro h1 {
+        max-width: 850px;
+        margin: 0;
+
+        font-size: variables.$font-size-5xl;
+        line-height: 0.95;
+        letter-spacing: -0.04em;
+
+        color: variables.$color-text;
+
+        span {
+            display: block;
+            color: variables.$color-primary-muted;
+        }
+    }
+
+    &__text {
+        max-width: 650px;
+        margin: variables.$spacing-xl 0 0;
+
+        font-size: variables.$font-size-lg;
+        line-height: 1.7;
+
+        color: variables.$color-muted;
+    }
+
+    /* Sections */
+
+    &__section {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: variables.$spacing-xxl;
+    }
+
+    &__section-header {
+        max-width: 700px;
+        margin-bottom: variables.$spacing-xl;
+
+        h2 {
+            margin: 0 0 variables.$spacing-md;
+            font-size: variables.$font-size-3xl;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: variables.$color-text;
+        }
+
+        p {
+            max-width: 620px;
+            margin: 0;
+            font-size: variables.$font-size-base;
+            line-height: 1.7;
+            color: variables.$color-muted;
+        }
+    }
+
+    /* Workflow */
+
+    &__steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: variables.$spacing-md;
+    }
+
+    &__step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: variables.$spacing-lg;
+
+        padding: variables.$spacing-xl;
+
+        background: variables.$color-accent-soft;
+        border: 1px solid variables.$color-border;
+        border-radius: variables.$radius-lg;
+
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+
+        &:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 24px rgba(variables.$color-primary, 0.08);
+        }
+
+        h3 {
+            margin: 0 0 variables.$spacing-sm;
+
+            font-size: variables.$font-size-lg;
+            line-height: 1.2;
+
+            color: variables.$color-primary;
+        }
+
+        p {
+            margin: 0;
+
+            font-size: variables.$font-size-sm;
+            line-height: 1.6;
+
+            color: variables.$color-muted;
+        }
+    }
+
+    &__number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 2.75rem;
+        height: 2.75rem;
+
+        flex-shrink: 0;
+
+        border-radius: 50%;
+        background: variables.$color-primary;
+        color: variables.$color-bg;
+
+        font-size: variables.$font-size-xs;
+        font-weight: 700;
+    }
+
+    /* Features */
+
+    &__section--features {
+        padding-top: variables.$spacing-xl;
+    }
+
+    &__features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: variables.$spacing-md;
+    }
+
+    &__feature {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        gap: variables.$spacing-lg;
+        padding: variables.$spacing-lg;
+        background: variables.$color-surface;
+        border: 1px solid variables.$color-border;
+        border-radius: variables.$radius-lg;
+
+        h3 {
+            margin: 0 0 variables.$spacing-sm;
+            font-size: variables.$font-size-lg;
+            line-height: 1.2;
+            color: variables.$color-primary;
+        }
+
+        p {
+            margin: 0;
+            font-size: variables.$font-size-sm;
+            line-height: 1.6;
+            color: variables.$color-muted;
+        }
+    }
+
+    &__feature-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: variables.$radius-sm;
+        background: variables.$color-secondary;
+        color: variables.$color-primary;
+        font-size: variables.$font-size-xs;
+        font-weight: 700;
+    }
+
+    /* Tip */
+
+    &__tip {
+        display: grid;
+        grid-template-columns: 1.4fr 0.8fr;
+        gap: variables.$spacing-xxl;
+        width: 100%;
+        max-width: 95%;
+        /* margin: 0 auto; */
+        padding: variables.$spacing-xxl;
+
+        h2 {
+            max-width: 650px;
+            margin: 0 0 variables.$spacing-md;
+            font-size: variables.$font-size-3xl;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            color: variables.$color-text;
+        }
+
+        p {
+            max-width: 650px;
+            margin: 0;
+            font-size: variables.$font-size-base;
+            line-height: 1.7;
+            color: variables.$color-muted;
+        }
+    }
+
+    &__tip-card {
+        align-self: start;
+        padding: variables.$spacing-xl;
+        background: variables.$color-primary;
+        color: variables.$color-bg;
+        border-radius: variables.$radius-lg;
+
+        span {
+            display: block;
+            margin-bottom: variables.$spacing-md;
+            color: variables.$color-secondary;
+            font-size: variables.$font-size-2xl;
+        }
+
+        p {
+            margin: 0;
+            color: variables.$color-bg;
+            font-size: variables.$font-size-sm;
+            line-height: 1.6;
+        }
+    }
+
+    /* Final action */
+
+    &__actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: variables.$spacing-xl;
+        width: 100%;
+        /* max-width: 85%; */
+        margin: 0 auto;
+        padding: variables.$spacing-xxl;
+        background: variables.$color-accent-soft;
+        border-radius: variables.$radius-xl;
+
+        h2 {
+            margin: 0 0 variables.$spacing-xs;
+            font-size: variables.$font-size-2xl;
+            line-height: 1.1;
+            color: variables.$color-primary;
+        }
+
+        p {
+            margin: 0;
+            font-size: variables.$font-size-sm;
+            line-height: 1.6;
+            color: variables.$color-muted;
+        }
+    }
+
+    &__buttons {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 3rem;
+        padding: variables.$spacing-sm variables.$spacing-lg;
+        border-radius: variables.$radius-sm;
+        border: none;
+        background: variables.$color-orange;
+        color: variables.$color-text;
+        text-decoration: none;
+        font-size: variables.$font-size-sm;
+        font-weight: 600;
+        transition:
+            transform 0.2s ease,
+            background-color 0.2s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            background: variables.$color-primary-hover;
+            color: variables.$color-bg;
+        }
+    }
+}
+
+@include breakpoints.down(tablet) {
+    .how-it-works {
+        padding: variables.$spacing-xxl;
+
+        &__intro, &__section {
+            padding: variables.$spacing-xl;
+        }
+    }
+}
+
+@include breakpoints.down(md) {
+    .how-it-works {
+        &__intro h1 {
+            font-size: variables.$font-size-4xl;
+        }
+
+        &__steps,
+        &__features {
+            grid-template-columns: 1fr;
+        }
+
+        &__tip {
+            grid-template-columns: 1fr;
+            gap: variables.$spacing-xl;
+        }
+
+        &__actions {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+    }
+}
+
+@include breakpoints.down(xs) {
+    .how-it-works {
+
+        &__text {
+            font-size: variables.$font-size-base;
+        }
+
+        &__step {
+            grid-template-columns: 1fr;
+        }
+
+        &__feature {
+            grid-template-columns: 1fr;
+        }
+
+        &__actions {
+            /* margin: 0 auto; */
+            max-width: 80%;
+        }
+
+        &__buttons {
+            width: 100%;
+
+            .button {
+                width: 100%;
+            }
+        }
+    }
+}

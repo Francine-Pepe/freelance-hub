@@ -11,6 +11,7 @@
 @use "project-form";
 @use "project-show";
 @use "guest-pages";
+@use "how-it-works";
 
 // Keep layout last so the existing cascade/order
 // of the original app.scss is preserved.

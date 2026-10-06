@@ -35,7 +35,6 @@
     padding: variables.$spacing-xl2 variables.$spacing-lg;
     background: variables.$color-text;
     color: variables.$color-bg;
-
     display: flex;
     flex-direction: column;
 }
@@ -51,7 +50,6 @@
 .sidebar__nav {
     display: flex;
     flex-direction: column;
-
     gap: variables.$spacing-sm;
     margin-top: variables.$spacing-xxl;
 
@@ -60,18 +58,13 @@
         display: flex;
         align-items: center;
         justify-content: flex-start;
-
         gap: variables.$spacing-lg;
         padding: variables.$spacing-md;
-
         font-size: 0.95rem;
         color: variables.$color-bg;
-
         border: 1px solid variables.$color-secondary;
         border-radius: variables.$radius-sm;
-
         text-align: left;
-
         transition: color 180ms ease;
 
         &:hover {
@@ -119,7 +112,9 @@
 .client-show__header h1,
 .project-form__header h1,
 .page-header__projects h1,
-.intro-page__content {
+.intro-page__content,
+.project-show__header h1,
+.how-it-works {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
@@ -143,6 +138,16 @@
     .sidebar {
         min-height: fit-content;
         width: 100%;
+        position: fixed;
+        z-index: 10000;
+    }
+
+    .page-header, .how-it-works, .intro-page {
+        margin-top: variables.$spacing-top;
+    }
+
+    .home {
+        margin-top: 13rem;
     }
 
     .sidebar__nav {
@@ -176,8 +181,26 @@
     }
 }
 
+@include breakpoints.down(sm-xs) {
+    .page-header, .how-it-works {
+        margin-top: variables.$spacing-top2;
+    }
+
+    .home {
+        margin-top: variables.$spacing-top;
+    }
+}
+
 @include breakpoints.down(xxs-xxxs) {
     .sidebar__nav {
         flex-direction: column;
+    }
+
+    .page-header, .how-it-works, .intro-page {
+        margin-top: variables.$spacing-top3;
+    }
+
+    .home {
+        margin-top: 22rem;
     }
 }

@@ -4,13 +4,12 @@
 
 .client-show {
     width: min(100%, 60rem);
-    padding: variables.$spacing-xl;
+    padding: variables.$spacing-xl2 variables.$spacing-xxl;
 }
 
 .client-show__header {
     @include mixins.flex-between(flex-start, variables.$spacing-xxl);
-
-    margin-bottom: variables.$spacing-xxl;
+    margin-bottom: variables.$spacing-xl;
 
     h1 {
         margin: 0;
@@ -26,14 +25,11 @@
 }
 
 .client-show__edit {
-    padding: variables.$spacing-md variables.$spacing-lg;
-
+    padding: variables.$spacing-sm variables.$spacing-lg;
     border: 1px solid variables.$color-orange;
     border-radius: variables.$radius-sm;
-
     background: variables.$color-orange;
     color: variables.$color-bg;
-
     font-size: 0.9rem;
     font-weight: 600;
 

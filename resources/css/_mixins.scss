@@ -36,6 +36,12 @@
     align-items: flex-start;
 }
 
+@mixin flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
 /* Form controls */
 
 @mixin form-control {
