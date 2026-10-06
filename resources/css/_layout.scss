@@ -30,10 +30,8 @@ body {
 
 .app {
     display: flex;
-
     width: 100%;
     max-width: 100%;
-
     min-width: 0;
     min-height: 100vh;
 }
@@ -43,12 +41,9 @@ body {
 .main-content {
     width: 100%;
     max-width: 100vw;
-
     min-width: 0;
     min-height: 100vh;
-
     margin: 0;
-
     overflow-x: hidden;
 }
 
@@ -56,14 +51,11 @@ body {
 
 .page {
     flex: 1 1 auto;
-
     width: 0;
     min-width: 0;
     min-height: 100vh;
-
     display: flex;
     flex-direction: column;
-
     overflow-x: hidden;
 }
 
@@ -71,12 +63,9 @@ body {
 
 .main {
     flex: 1 1 auto;
-
     width: 100%;
     max-width: 100%;
-
     min-width: 0;
-
     overflow-wrap: break-word;
     overflow-x: hidden;
 }
@@ -87,15 +76,11 @@ body {
     /* width: 20vw; */
 
     min-height: 100vh;
-
     flex: 0 0 auto;
     flex-shrink: 0;
-
     padding: variables.$spacing-xl2 variables.$spacing-lg;
-
     background: variables.$color-text;
     color: variables.$color-bg;
-
     display: flex;
     flex-direction: column;
 
@@ -127,9 +112,7 @@ body {
 .sidebar__nav {
     display: flex;
     flex-direction: column;
-
     gap: variables.$spacing-sm;
-
     margin-top: variables.$spacing-xxl;
 
     a,
@@ -137,21 +120,14 @@ body {
         display: flex;
         align-items: center;
         justify-content: flex-start;
-
         gap: variables.$spacing-lg;
-
         width: 100%;
-
         padding: variables.$spacing-md;
-
         font-size: 0.95rem;
         color: variables.$color-bg;
-
         border: 1px solid variables.$color-secondary;
         border-radius: variables.$radius-sm;
-
         text-align: left;
-
         transition: color 180ms ease;
 
         &:hover {
@@ -164,9 +140,7 @@ body {
     .login-button,
     .sidebar__logout {
         background-color: variables.$color-orange;
-
         border: none;
-
         color: variables.$color-text;
 
         &:hover {
@@ -211,11 +185,8 @@ body {
     font-size: 1.25rem;
     font-weight: 600;
     letter-spacing: -0.02em;
-
     padding: 0 0 variables.$spacing-lg variables.$spacing-lg;
-
     margin-left: calc(-1 * variables.$spacing-lg);
-
     margin-right: calc(-1 * variables.$spacing-lg);
 }
 
@@ -224,29 +195,23 @@ body {
 .footer {
     width: 100%;
     max-width: 100%;
-
     flex-shrink: 0;
-
     padding: variables.$spacing-xl2 variables.$spacing-page
         variables.$spacing-lg;
 
     background-color: variables.$color-text;
     color: variables.$color-bg;
-
     overflow: hidden;
+    z-index: 100;
 }
 
 .footer__content {
     display: flex;
     justify-content: space-between;
-
     width: 100%;
     max-width: 90rem;
-
     margin-inline: auto;
-
     gap: variables.$spacing-xl;
-
     min-width: 0;
 }
 
@@ -256,24 +221,17 @@ body {
 
     a {
         display: inline-block;
-
         margin-bottom: variables.$spacing-sm;
-
         color: variables.$color-bg;
-
         font-size: variables.$font-size-xl;
         font-weight: 600;
-
         letter-spacing: -0.02em;
-
         text-decoration: none;
     }
 
     p {
         margin: 0;
-
         color: variables.$color-secondary-muted;
-
         font-size: variables.$font-size-sm;
         line-height: 1.6;
     }
@@ -283,20 +241,14 @@ body {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-
     flex-wrap: wrap;
-
     gap: variables.$spacing-md variables.$spacing-lg;
-
     min-width: 0;
 
     a {
         color: variables.$color-bg;
-
         font-size: variables.$font-size-sm;
-
         text-decoration: none;
-
         transition: color 180ms ease;
 
         &:hover {
@@ -308,23 +260,16 @@ body {
 .footer__bottom {
     display: flex;
     justify-content: space-between;
-
     width: 100%;
     max-width: 90rem;
-
     margin-top: variables.$spacing-xl;
-
     padding-top: variables.$spacing-md;
-
     gap: variables.$spacing-lg;
-
     border-top: 1px solid rgba(124, 189, 209, 0.35);
 
     p {
         margin: 0;
-
         color: variables.$color-secondary-muted;
-
         font-size: variables.$font-size-xs;
     }
 }
@@ -347,10 +292,8 @@ body {
 @include breakpoints.down(tablet) {
     .app {
         flex-direction: column;
-
         width: 100%;
         max-width: 100%;
-
         min-width: 0;
         min-height: 100vh;
     }
@@ -358,7 +301,6 @@ body {
     .main-content {
         width: 100%;
         max-width: 100%;
-
         min-width: 0;
         min-height: 100vh;
     }
@@ -368,7 +310,6 @@ body {
     .page {
         width: 100%;
         max-width: 100%;
-
         min-width: 0;
         min-height: 100vh;
     }
@@ -377,23 +318,15 @@ body {
 
     .sidebar {
         position: fixed;
-
         top: 0;
         left: 0;
-
         width: 100%;
         max-width: 100vw;
-
         min-height: unset;
-
         padding: variables.$spacing-md variables.$spacing-lg;
-
         z-index: variables.$z-dropdown;
-
         background: variables.$color-text;
-
         transform: translateY(0);
-
         transition:
             transform 250ms ease,
             box-shadow 250ms ease;
@@ -409,7 +342,6 @@ body {
 
     .sidebar.is-menu-open {
         transform: translateY(0);
-
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
@@ -419,7 +351,6 @@ body {
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         width: 100%;
         min-width: 0;
     }
@@ -428,10 +359,8 @@ body {
 
     .sidebar__logo {
         min-width: 0;
-
         margin: 0;
         padding: 0;
-
         border-bottom: none;
 
         a {
@@ -444,25 +373,17 @@ body {
 
     .sidebar__toggle {
         display: flex;
-
         flex-direction: column;
         align-items: center;
         justify-content: center;
-
         flex-shrink: 0;
-
         gap: 0.3rem;
-
         width: 2.75rem;
         height: 2.75rem;
-
         padding: variables.$spacing-sm;
-
         border: 1px solid variables.$color-secondary;
         border-radius: variables.$radius-sm;
-
         background: transparent;
-
         cursor: pointer;
 
         transition:
@@ -471,12 +392,9 @@ body {
 
         span {
             display: block;
-
             width: 100%;
             height: 2px;
-
             background-color: variables.$color-bg;
-
             transition:
                 transform 180ms ease,
                 opacity 180ms ease;
@@ -514,20 +432,13 @@ body {
 
     .sidebar__nav {
         display: flex;
-
         flex-direction: column;
-
         width: 100%;
         min-width: 0;
-
         max-height: 0;
-
         overflow: hidden;
-
         margin-top: 0;
-
         opacity: 0;
-
         transition:
             max-height 250ms ease,
             margin-top 250ms ease,
@@ -539,11 +450,8 @@ body {
     .sidebar.is-menu-open {
         .sidebar__nav {
             max-height: calc(100vh - 5rem);
-
             margin-top: variables.$spacing-lg;
-
             overflow-y: auto;
-
             opacity: 1;
         }
     }
@@ -555,44 +463,32 @@ body {
         .sidebar__logout {
             width: 100%;
             max-width: 100%;
-
             justify-content: flex-start;
-
             gap: variables.$spacing-lg;
-
             padding: variables.$spacing-md;
-
             border: 1px solid variables.$color-secondary;
-
             border-radius: variables.$radius-sm;
-
             color: variables.$color-bg;
-
             text-align: left;
         }
 
         a:hover,
         .sidebar__logout:hover {
             background-color: variables.$color-orange-hover;
-
             color: variables.$color-text;
-
             border-color: transparent;
         }
 
         .login-button,
         .sidebar__logout {
             background-color: variables.$color-orange;
-
             border: none;
-
             color: variables.$color-text;
         }
 
         .login-button:hover,
         .sidebar__logout:hover {
             background-color: variables.$color-secondary;
-
             color: variables.$color-text;
         }
     }
@@ -602,9 +498,7 @@ body {
     .main {
         width: 100%;
         max-width: 100%;
-
         min-width: 0;
-
         padding-top: 4rem;
     }
 
@@ -620,14 +514,12 @@ body {
     .footer {
         width: 100%;
         max-width: 100%;
-
         padding: variables.$spacing-xl variables.$spacing-lg
             variables.$spacing-lg;
     }
 
     .footer__content {
         flex-direction: column;
-
         gap: variables.$spacing-xl;
     }
 
@@ -637,7 +529,6 @@ body {
 
     .footer__bottom {
         flex-direction: column;
-
         gap: variables.$spacing-xs;
     }
 }
@@ -650,8 +541,7 @@ body {
     }
 
     .sidebar {
-        padding-left: variables.$spacing-md;
-        padding-right: variables.$spacing-md;
+        padding: 0 variables.$spacing-md;
     }
 
     .sidebar__toggle {
@@ -667,7 +557,6 @@ body {
 
     .footer__nav {
         flex-direction: column;
-
         gap: variables.$spacing-sm;
     }
 }

@@ -1,5 +1,6 @@
 @use "variables" as variables;
 @use "mixins";
+@use "breakpoints";
 
 /* Stats */
 
@@ -317,5 +318,13 @@ button,
     p {
         margin: 0 0 variables.$spacing-md;
         color: variables.$color-muted;
+    }
+}
+
+/* responsive */
+
+@include breakpoints.down(xxs) {
+    .item-card {
+        padding: variables.$spacing-lg;
     }
 }
