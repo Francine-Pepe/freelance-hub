@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -43,6 +44,14 @@ class RegisteredUserController extends Controller
         ]);
 
         event(new Registered($user));
+        
+        Log::info('Verification event fired', [
+
+            'user_id' => $user->id,
+
+            'email' => $user->email,
+
+        ]);
 
         Auth::login($user);
 
