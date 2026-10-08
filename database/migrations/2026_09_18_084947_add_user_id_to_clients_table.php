@@ -26,7 +26,7 @@ return new class extends Migration
     {
         Schema::table('clients', function (Blueprint $table) {
             $table->dropForeign(['user_id']);
-            $table->dropColumn('cascade');
+            $table->dropColumn('user_id');
         });
     }
 };
