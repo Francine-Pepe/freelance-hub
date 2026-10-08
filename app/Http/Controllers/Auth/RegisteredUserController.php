@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
@@ -39,7 +40,7 @@ class RegisteredUserController extends Controller
                 'lowercase',
                 'email:rfc',
                 'max:255',
-                'unique:' . User::class,
+                Rule::unique('users', 'email'),
             ],
             'password' => [
                 'required',
