@@ -12,31 +12,16 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/debug-mail', function () {
-
     return response()->json([
-
         'app_env' => config('app.env'),
-
         'app_url' => config('app.url'),
-
         'mail_mailer' => config('mail.default'),
-
         'mail_host' => config('mail.mailers.smtp.host'),
-
         'mail_port' => config('mail.mailers.smtp.port'),
-
         'mail_encryption' => config('mail.mailers.smtp.scheme'),
-
         'mail_from_address' => config('mail.from.address'),
-
         'mail_from_name' => config('mail.from.name'),
-
     ]);
-
-})->middleware('auth');
-
-Route::get('/debug-route', function () {
-    return 'DEBUG ROUTE WORKS';
 });
 
 
