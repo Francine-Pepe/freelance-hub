@@ -7,6 +7,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReminderController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 Route::get('/', function () {
     return view('home');
@@ -17,6 +18,24 @@ Route::get('/debug-users', function () {
         'database' => DB::connection()->getDatabaseName(),
         'user_count' => \App\Models\User::count(),
         'users' => \App\Models\User::select('id', 'name', 'email')->get(),
+    ]);
+});
+
+Route::get('/debug-validation', function () {
+    $email = 'this-email-definitely-does-not-exist-123456@example.com';
+
+    $queryCount = \App\Models\User::where('email', $email)->count();
+
+    $validator = Validator::make(
+        ['email' => $email],
+        ['email' => ['required', 'email', 'unique:'.\App\Models\User::class]]
+    );
+
+    return response()->json([
+        'test_email' => $email,
+        'direct_query_count' => $queryCount,
+        'validation_passes' => ! $validator->fails(),
+        'validation_errors' => $validator->errors()->toArray(),
     ]);
 });
 
