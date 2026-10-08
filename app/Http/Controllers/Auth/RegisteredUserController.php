@@ -9,10 +9,10 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\Rules;
 use Illuminate\Validation\ValidationException;
 use Illuminate\View\View;
-use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -33,8 +33,19 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email:rfc', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'email' => [
+                'required',
+                'string',
+                'lowercase',
+                'email:rfc',
+                'max:255',
+                'unique:' . User::class,
+            ],
+            'password' => [
+                'required',
+                'confirmed',
+                Rules\Password::defaults(),
+            ],
         ]);
 
         $user = User::create([
@@ -43,17 +54,24 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        event(new Registered($user));
-        
-        Log::info('Verification event fired', [
-
+        Log::info('USER CREATED', [
             'user_id' => $user->id,
-
             'email' => $user->email,
+        ]);
 
+        event(new Registered($user));
+
+        Log::info('REGISTERED EVENT FIRED', [
+            'user_id' => $user->id,
+            'email' => $user->email,
         ]);
 
         Auth::login($user);
+
+        Log::info('USER LOGGED IN', [
+            'user_id' => $user->id,
+            'email' => $user->email,
+        ]);
 
         return redirect(route('dashboard', absolute: false));
     }
