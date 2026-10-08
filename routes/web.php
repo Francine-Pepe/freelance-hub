@@ -6,24 +6,19 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ReminderController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
     return view('home');
 })->name('home');
 
-Route::get('/debug-mail', function () {
+Route::get('/debug-users', function () {
     return response()->json([
-        'app_env' => config('app.env'),
-        'app_url' => config('app.url'),
-        'mail_mailer' => config('mail.default'),
-        'mail_host' => config('mail.mailers.smtp.host'),
-        'mail_port' => config('mail.mailers.smtp.port'),
-        'mail_encryption' => config('mail.mailers.smtp.scheme'),
-        'mail_from_address' => config('mail.from.address'),
-        'mail_from_name' => config('mail.from.name'),
+        'database' => DB::connection()->getDatabaseName(),
+        'user_count' => \App\Models\User::count(),
+        'users' => \App\Models\User::select('id', 'name', 'email')->get(),
     ]);
 });
-
 
 // Public pages
 Route::get('/clients', [ClientController::class, 'index'])
